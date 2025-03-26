@@ -1,34 +1,132 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+// Import des images
+import heroImage from './images/hero-image.jpg';
+import webDevImage from './images/web-development.jpg';
+import mobileDevImage from './images/mobile-development.jpg';
+import aiImage from './images/ai.jpg';
+import profileImage from './images/profile.jpg';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.title = "Taha Hilal Bik - Portfolio";
+    
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out-cubic',
+      once: false,
+      mirror: true,
+      offset: 120
+    });
+
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setDarkMode(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const downloadCV = () => {
+    try {
+      const cvPath = process.env.PUBLIC_URL + '/CV_Taha_Hilal_Blk.pdf';
+      const link = document.createElement('a');
+      link.href = cvPath;
+      link.download = 'CV_Taha_Hilal_Bik.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Erreur de téléchargement:', error);
+      alert('Le CV n\'est pas disponible pour le moment. Veuillez me contacter directement.');
+    }
+  };
+
   return (
-    <div className="portfolio">
+    <div className={`portfolio ${darkMode ? 'dark' : ''}`}>
+      <SpeedInsights />
+      
       {/* Navigation */}
       <nav className="navbar">
         <div className="container">
           <a href="#home" className="logo">Taha Hilal Bik</a>
-          <ul className="nav-links">
-            <li><a href="#about">À Propos</a></li>
-            <li><a href="#experience">Expérience</a></li>
-            <li><a href="#skills">Compétences</a></li>
-            <li><a href="#projects">Projets</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          
+          <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+            <ul>
+              <li><a href="#about" onClick={() => setMenuOpen(false)}>À Propos</a></li>
+              <li><a href="#experience" onClick={() => setMenuOpen(false)}>Expérience</a></li>
+              <li><a href="#skills" onClick={() => setMenuOpen(false)}>Compétences</a></li>
+              <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projets</a></li>
+              <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+            </ul>
+          </div>
+          
+          <div className="nav-actions">
+            <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+              {darkMode ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              )}
+            </button>
+            
+            <button className="menu-toggle" onClick={toggleMenu}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Hero Section */}
       <section id="home" className="hero">
         <div className="container">
-          <div className="hero-content">
+          <div className="hero-content" data-aos="fade-right" data-aos-delay="100">
             <h1>Taha Hilal Bik</h1>
             <h2>Ingénieur en Génie Informatique</h2>
             <p>Développeur Full Stack spécialisé en Java, Spring Boot et React</p>
-            <a href="#contact" className="btn">Me Contacter</a>
+            <div className="hero-buttons">
+              <a href="#contact" className="btn">Me Contacter</a>
+              <button onClick={downloadCV} className="btn btn-secondary">Télécharger CV</button>
+            </div>
           </div>
-          <div className="hero-image">
-            {/* Vous pouvez ajouter votre photo ici */}
+          <div className="hero-image" data-aos="fade-left" data-aos-delay="200">
+            
+            {/* <img src={profileImage} alt="Taha Hilal Bik" className="profile-photo" /> */}
+            <div className="image-overlay"></div>
           </div>
         </div>
       </section>
@@ -36,13 +134,27 @@ function App() {
       {/* About Section */}
       <section id="about" className="section">
         <div className="container">
-          <h2 className="section-title">À Propos de Moi</h2>
+          <h2 className="section-title" data-aos="fade-up">À Propos de Moi</h2>
           <div className="about-content">
-            <p>
-              Étudiant en dernière année du cycle ingénieur en génie informatique, je possède une forte volonté de contribuer au développement de solutions logicielles innovantes. 
-              Passionné par le développement web et mobile, je maîtrise les technologies modernes pour créer des applications performantes et intuitives.
-            </p>
-            <div className="education">
+            <div className="about-text" data-aos="fade-right">
+              <p>
+                Étudiant en dernière année du cycle ingénieur en génie informatique, je possède une forte volonté de contribuer au développement de solutions logicielles innovantes. 
+                Passionné par le développement web et mobile, je maîtrise les technologies modernes pour créer des applications performantes et intuitives.
+              </p>
+              
+              <div className="about-images">
+                <div className="image-card" data-aos="zoom-in">
+                  <img src={webDevImage} alt="Développement Web" />
+                  <div className="image-caption">Développement Web</div>
+                </div>
+                <div className="image-card" data-aos="zoom-in" data-aos-delay="200">
+                  <img src={mobileDevImage} alt="Développement Mobile" />
+                  <div className="image-caption">Développement Mobile</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="education" data-aos="fade-left">
               <h3>Formation</h3>
               <ul>
                 <li>
@@ -66,9 +178,9 @@ function App() {
       {/* Experience Section */}
       <section id="experience" className="section dark-bg">
         <div className="container">
-          <h2 className="section-title">Expérience Professionnelle</h2>
+          <h2 className="section-title" data-aos="fade-up">Expérience Professionnelle</h2>
           
-          <div className="experience-item">
+          <div className="experience-item" data-aos="fade-up">
             <h3>Stagiaire en Développement Web</h3>
             <h4>Royal Air Maroc (RAM) | Juillet 2024 - Août 2024</h4>
             <p>
@@ -87,7 +199,7 @@ function App() {
             </div>
           </div>
 
-          <div className="experience-item">
+          <div className="experience-item" data-aos="fade-up" data-aos-delay="100">
             <h3>Stagiaire en Développement Web</h3>
             <h4>Safflait, Maroc | Août 2023 - Septembre 2023</h4>
             <p>
@@ -110,10 +222,10 @@ function App() {
       {/* Skills Section */}
       <section id="skills" className="section">
         <div className="container">
-          <h2 className="section-title">Mes Compétences</h2>
+          <h2 className="section-title" data-aos="fade-up">Mes Compétences</h2>
           <div className="skills-container">
             <div className="skills-grid">
-              <div className="skill-category">
+              <div className="skill-category" data-aos="fade-up">
                 <h3>Langages de Programmation</h3>
                 <ul>
                   <li>Java</li>
@@ -124,7 +236,7 @@ function App() {
                 </ul>
               </div>
               
-              <div className="skill-category">
+              <div className="skill-category" data-aos="fade-up" data-aos-delay="100">
                 <h3>Technologies Web</h3>
                 <ul>
                   <li>Spring Boot</li>
@@ -135,7 +247,7 @@ function App() {
                 </ul>
               </div>
               
-              <div className="skill-category">
+              <div className="skill-category" data-aos="fade-up" data-aos-delay="200">
                 <h3>Bases de Données</h3>
                 <ul>
                   <li>MySQL</li>
@@ -144,7 +256,7 @@ function App() {
                 </ul>
               </div>
               
-              <div className="skill-category">
+              <div className="skill-category" data-aos="fade-up" data-aos-delay="300">
                 <h3>Outils & Méthodologies</h3>
                 <ul>
                   <li>UML</li>
@@ -154,7 +266,7 @@ function App() {
                 </ul>
               </div>
 
-              <div className="skill-category">
+              <div className="skill-category" data-aos="fade-up" data-aos-delay="400">
                 <h3>Soft Skills</h3>
                 <ul>
                   <li>Esprit d'équipe</li>
@@ -166,7 +278,7 @@ function App() {
               </div>
             </div>
 
-            <div className="languages-section">
+            <div className="languages-section" data-aos="fade-up" data-aos-delay="500">
               <h3>Langues</h3>
               <div className="language-item">
                 <span className="language-name">Arabe (Langue maternelle)</span>
@@ -194,11 +306,13 @@ function App() {
       {/* Projects Section */}
       <section id="projects" className="section dark-bg">
         <div className="container">
-          <h2 className="section-title">Mes Projets</h2>
+          <h2 className="section-title" data-aos="fade-up">Mes Projets</h2>
           <div className="projects-grid">
             
-            {/* Projet Smart Recruter */}
-            <div className="project-card">
+            <div className="project-card" data-aos="fade-up">
+              <div className="project-image">
+                <img src={aiImage} alt="Smart Recruter" />
+              </div>
               <h3>Smart Recruter</h3>
               <p className="project-description">
                 Plateforme de recrutement intelligent utilisant l'IA pour matcher 
@@ -219,8 +333,10 @@ function App() {
               </a>
             </div>
             
-            {/* Projet BookHub */}
-            <div className="project-card">
+            <div className="project-card" data-aos="fade-up" data-aos-delay="100">
+              <div className="project-image">
+                <img src={webDevImage} alt="BookHub" />
+              </div>
               <h3>BookHub</h3>
               <p className="project-description">Plateforme Web de distribution et gestion d'E-Books</p>
               <div className="project-tech">
@@ -236,8 +352,10 @@ function App() {
               </a>
             </div>
             
-            {/* Projet QuizzApp */}
-            <div className="project-card">
+            <div className="project-card" data-aos="fade-up" data-aos-delay="200">
+              <div className="project-image">
+                <img src={mobileDevImage} alt="QuizzApp" />
+              </div>
               <h3>QuizzApp</h3>
               <p className="project-description">Application mobile de quizz pour le permis de conduire</p>
               <div className="project-tech">
@@ -258,9 +376,9 @@ function App() {
       {/* Contact Section */}
       <section id="contact" className="section">
         <div className="container">
-          <h2 className="section-title">Contactez-moi</h2>
+          <h2 className="section-title" data-aos="fade-up">Contactez-moi</h2>
           <div className="contact-content">
-            <div className="contact-info">
+            <div className="contact-info" data-aos="fade-right">
               <h3>Informations de Contact</h3>
               <ul>
                 <li>
@@ -285,7 +403,7 @@ function App() {
                 </li>
               </ul>
               <div className="social-links">
-                <a href="https://www.linkedin.com/in/taha-hilalbik-8555b2246/" className="social-icon">
+                <a href="https://www.linkedin.com/in/taha-hilalbik-8555b2246/" className="social-icon" target="_blank" rel="noopener noreferrer">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                     <rect x="2" y="9" width="4" height="12"></rect>
@@ -293,7 +411,7 @@ function App() {
                   </svg>
                   LinkedIn
                 </a>
-                <a href="https://github.com/tahahb02" className="social-icon">
+                <a href="https://github.com/tahahb02" className="social-icon" target="_blank" rel="noopener noreferrer">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
@@ -301,7 +419,7 @@ function App() {
                 </a>
               </div>
             </div>
-            <form className="contact-form">
+            <form className="contact-form" data-aos="fade-left">
               <div className="form-group">
                 <input type="text" placeholder="Votre nom" required />
               </div>
