@@ -10,7 +10,12 @@ import webDevImage from './images/web-development.jpg';
 import mobileDevImage from './images/mobile-development.jpg';
 import aiImage from './images/ai.jpg';
 import profileImage from './images/profile.jpg';
-
+import javaCert from './images/java-cert.jpg.png'; // placeholder
+import pythonCert from './images/python-cert.jpg.png'; // placeholder
+import reactCert from './images/react-cert.jpg.png'; // placeholder
+import umlCert from './images/uml-cert.jpg.png'; // placeholder
+import agileCert from './images/agile-cert.jpg.png'; // placeholder
+import frenchCert from './images/french-cert.jpg.png'; // placeholder
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -77,6 +82,7 @@ function App() {
               <li><a href="#experience" onClick={() => setMenuOpen(false)}>Expérience</a></li>
               <li><a href="#skills" onClick={() => setMenuOpen(false)}>Compétences</a></li>
               <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projets</a></li>
+              <li><a href="#certifications" onClick={() => setMenuOpen(false)}>Certifications</a></li>
               <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
             </ul>
           </div>
@@ -124,8 +130,6 @@ function App() {
             </div>
           </div>
           <div className="hero-image" data-aos="fade-left" data-aos-delay="200">
-            
-            {/* <img src={profileImage} alt="Taha Hilal Bik" className="profile-photo" /> */}
             <div className="image-overlay"></div>
           </div>
         </div>
@@ -181,6 +185,26 @@ function App() {
           <h2 className="section-title" data-aos="fade-up">Expérience Professionnelle</h2>
           
           <div className="experience-item" data-aos="fade-up">
+            <h3>Stagiaire en Développement Web PFE</h3>
+            <h4>Web4Jobs, Maroc | Mars 2025 - Août 2025 (5 mois)</h4>
+            <p>
+              Développement d'une plateforme de gestion des patrimoines pour les centres de coding de l'entreprise au Maroc et en Afrique.
+            </p>
+            <ul className="responsibilities">
+              <li>Analyse des besoins et modélisation UML</li>
+              <li>Développement du frontend et backend de la plateforme</li>
+              <li>Implémentation d'un module intelligent de maintenance basé sur l'analyse des feedbacks via LLM (Ollama)</li>
+            </ul>
+            <div className="tech-stack">
+              <span>Spring Boot</span>
+              <span>Java</span>
+              <span>React JS</span>
+              <span>MySQL</span>
+              <span>Ollama</span>
+            </div>
+          </div>
+
+          <div className="experience-item" data-aos="fade-up" data-aos-delay="100">
             <h3>Stagiaire en Développement Web</h3>
             <h4>Royal Air Maroc (RAM) | Juillet 2024 - Août 2024</h4>
             <p>
@@ -199,7 +223,7 @@ function App() {
             </div>
           </div>
 
-          <div className="experience-item" data-aos="fade-up" data-aos-delay="100">
+          <div className="experience-item" data-aos="fade-up" data-aos-delay="200">
             <h3>Stagiaire en Développement Web</h3>
             <h4>Safflait, Maroc | Août 2023 - Septembre 2023</h4>
             <p>
@@ -368,6 +392,74 @@ function App() {
                   <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section id="certifications" className="section">
+        <div className="container">
+          <h2 className="section-title" data-aos="fade-up">Mes Certifications</h2>
+          <div className="certifications-grid">
+            <div className="certification-card" data-aos="fade-up">
+              <div className="certification-image">
+                <img src={javaCert} alt="Certification Java" />
+                <div className="certification-overlay">
+                  <h3>Introduction to Java and Object-Oriented Programming</h3>
+                  <p>Coursera</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="certification-card" data-aos="fade-up" data-aos-delay="100">
+              <div className="certification-image">
+                <img src={pythonCert} alt="Certification Python" />
+                <div className="certification-overlay">
+                  <h3>Python for Everybody</h3>
+                  <p>Coursera</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="certification-card" data-aos="fade-up" data-aos-delay="200">
+              <div className="certification-image">
+                <img src={reactCert} alt="Certification React" />
+                <div className="certification-overlay">
+                  <h3>React Basics</h3>
+                  <p>Coursera</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="certification-card" data-aos="fade-up" data-aos-delay="300">
+              <div className="certification-image">
+                <img src={umlCert} alt="Certification UML" />
+                <div className="certification-overlay">
+                  <h3>Modeling Software Systems using UML</h3>
+                  <p>Coursera</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="certification-card" data-aos="fade-up" data-aos-delay="400">
+              <div className="certification-image">
+                <img src={agileCert} alt="Certification Agile" />
+                <div className="certification-overlay">
+                  <h3>Agile with Atlassian Jira</h3>
+                  <p>Coursera</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="certification-card" data-aos="fade-up" data-aos-delay="500">
+              <div className="certification-image">
+                <img src={frenchCert} alt="Certification Français" />
+                <div className="certification-overlay">
+                  <h3>French Intermediate course B1-B2</h3>
+                  <p>Coursera</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
