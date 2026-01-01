@@ -9,13 +9,13 @@ import heroImage from './images/hero-image.jpg';
 import webDevImage from './images/web-development.jpg';
 import mobileDevImage from './images/mobile-development.jpg';
 import aiImage from './images/ai.jpg';
-import profileImage from './images/profile.jpg';
-import javaCert from './images/java-cert.jpg.png'; // placeholder
-import pythonCert from './images/python-cert.jpg.png'; // placeholder
-import reactCert from './images/react-cert.jpg.png'; // placeholder
-import umlCert from './images/uml-cert.jpg.png'; // placeholder
-import agileCert from './images/agile-cert.jpg.png'; // placeholder
-import frenchCert from './images/french-cert.jpg.png'; // placeholder
+import profileImage from './images/profile1.jpg'; // Votre photo de profil
+import javaCert from './images/java-cert.jpg.png';
+import pythonCert from './images/python-cert.jpg.png';
+import reactCert from './images/react-cert.jpg.png';
+import umlCert from './images/uml-cert.jpg.png';
+import agileCert from './images/agile-cert.jpg.png';
+import frenchCert from './images/french-cert.jpg.png';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -118,7 +118,7 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section avec Photo de Profil */}
       <section id="home" className="hero">
         <div className="container">
           <div className="hero-content" data-aos="fade-right" data-aos-delay="100">
@@ -131,7 +131,18 @@ function App() {
             </div>
           </div>
           <div className="hero-image" data-aos="fade-left" data-aos-delay="200">
-            <div className="image-overlay"></div>
+            <div className="profile-image-container">
+              <img 
+                src={profileImage} 
+                alt="Taha Hilal Bik - Ingénieur en Génie Informatique" 
+                className="profile-image"
+                style={{ 
+                  border: 'none', 
+                  boxShadow: 'none',
+                  outline: 'none'
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>

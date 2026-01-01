@@ -1290,3 +1290,90 @@ p {
 .experience-item:hover::before {
   transform: scaleY(1);
 }
+
+/* === STYLES POUR LA PHOTO SANS CADRE NI EFFET === */
+.profile-image-container {
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none !important;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  /* SUPPRIMEZ TOUS LES EFFETS VISUELS */
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  background: none !important;
+  
+  /* SUPPRIMEZ TOUTES LES ANIMATIONS */
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+  
+  /* Réinitialise tous les styles */
+  margin: 0;
+  padding: 0;
+  filter: none !important;
+}
+
+.profile-image:hover {
+  /* Pas d'effet au survol non plus */
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Supprimez tous les effets pseudo-éléments */
+.profile-image-container::before,
+.profile-image-container::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Supprimez l'overlay */
+.image-overlay {
+  display: none !important;
+}
+
+/* Assurez-vous que l'image n'a pas d'effet AOS */
+.hero-image[data-aos] .profile-image {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Supprimez le badge si présent */
+.profile-badge {
+  display: none !important;
+}
+
+/* Responsive pour la photo */
+@media (max-width: 1024px) {
+  .profile-image-container {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-image-container {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-image-container {
+    width: 220px;
+    height: 220px;
+  }
+}
