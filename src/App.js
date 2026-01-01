@@ -16,6 +16,7 @@ import reactCert from './images/react-cert.jpg.png'; // placeholder
 import umlCert from './images/uml-cert.jpg.png'; // placeholder
 import agileCert from './images/agile-cert.jpg.png'; // placeholder
 import frenchCert from './images/french-cert.jpg.png'; // placeholder
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,7 +55,7 @@ function App() {
 
   const downloadCV = () => {
     try {
-      const cvPath = process.env.PUBLIC_URL + '/CV_Taha_Hilal_Blk.pdf';
+      const cvPath = process.env.PUBLIC_URL + '/CV_Taha_Hilal_Bik.pdf';
       const link = document.createElement('a');
       link.href = cvPath;
       link.download = 'CV_Taha_Hilal_Bik.pdf';
@@ -122,8 +123,8 @@ function App() {
         <div className="container">
           <div className="hero-content" data-aos="fade-right" data-aos-delay="100">
             <h1>Taha Hilal Bik</h1>
-            <h2>Ingénieur en Génie Informatique</h2>
-            <p>Développeur Full Stack spécialisé en Java, Spring Boot et React</p>
+            <h2>Ingénieur d'État en Génie Informatique et Réseaux - MIAGE</h2>
+            <p>Spécialiste en développement full-stack avec Java Spring Boot et React, passionné par l'architecture logicielle et l'intégration de l'IA</p>
             <div className="hero-buttons">
               <a href="#contact" className="btn">Me Contacter</a>
               <button onClick={downloadCV} className="btn btn-secondary">Télécharger CV</button>
@@ -142,18 +143,25 @@ function App() {
           <div className="about-content">
             <div className="about-text" data-aos="fade-right">
               <p>
-                Étudiant en dernière année du cycle ingénieur en génie informatique, je possède une forte volonté de contribuer au développement de solutions logicielles innovantes. 
-                Passionné par le développement web et mobile, je maîtrise les technologies modernes pour créer des applications performantes et intuitives.
+                Ingénieur d'État en Génie Informatique et Réseaux, option MIAGE (Méthodes Informatiques Appliquées à la Gestion des Entreprises).
+                Spécialisé en développement full-stack avec Java Spring Boot et React, je possède une forte volonté de contribuer au développement 
+                de solutions logicielles innovantes dans des secteurs exigeants comme l'aéronautique et l'agroalimentaire.
+                Passionné par le développement web, mobile et l'architecture logicielle, je maîtrise les technologies modernes 
+                pour créer des applications performantes et intuitives.
               </p>
               
               <div className="about-images">
                 <div className="image-card" data-aos="zoom-in">
                   <img src={webDevImage} alt="Développement Web" />
-                  <div className="image-caption">Développement Web</div>
+                  <div className="image-caption">Développement Full-Stack</div>
                 </div>
                 <div className="image-card" data-aos="zoom-in" data-aos-delay="200">
                   <img src={mobileDevImage} alt="Développement Mobile" />
-                  <div className="image-caption">Développement Mobile</div>
+                  <div className="image-caption">Architecture Logicielle</div>
+                </div>
+                <div className="image-card" data-aos="zoom-in" data-aos-delay="400">
+                  <img src={aiImage} alt="Intelligence Artificielle" />
+                  <div className="image-caption">Intelligence Artificielle</div>
                 </div>
               </div>
             </div>
@@ -162,7 +170,8 @@ function App() {
               <h3>Formation</h3>
               <ul>
                 <li>
-                  <strong>Cycle d'ingénierie en informatique et réseau</strong>
+                  <strong>Ingénieur d'État en Génie Informatique et Réseaux</strong>
+                  <span>Option MIAGE (Méthodes Informatiques Appliquées à la Gestion des Entreprises)</span>
                   <span>EMSI (2022-2025)</span>
                 </li>
                 <li>
@@ -185,58 +194,65 @@ function App() {
           <h2 className="section-title" data-aos="fade-up">Expérience Professionnelle</h2>
           
           <div className="experience-item" data-aos="fade-up">
-            <h3>Stagiaire en Développement Web PFE</h3>
-            <h4>Web4Jobs, Maroc | Mars 2025 - Août 2025 (5 mois)</h4>
+            <h3>Stagiaire Développeur Full Stack – PFE</h3>
+            <h4>Web4Jobs | Mars 2025 – Août 2025 | Casablanca, Maroc</h4>
             <p>
               Développement d'une plateforme de gestion des patrimoines pour les centres de coding de l'entreprise au Maroc et en Afrique.
             </p>
             <ul className="responsibilities">
-              <li>Analyse des besoins et modélisation UML</li>
-              <li>Développement du frontend et backend de la plateforme</li>
-              <li>Implémentation d'un module intelligent de maintenance basé sur l'analyse des feedbacks via LLM (Ollama)</li>
+              <li>Analyse des besoins et modélisation UML du système</li>
+              <li>Développement Front-End avec ReactJS et Back-End avec Java Spring Boot</li>
+              <li>Intégration d'un module IA (Ollama LLM) pour la maintenance prédictive</li>
+              <li>Mise en place des API REST et gestion de la base de données MySQL</li>
             </ul>
             <div className="tech-stack">
-              <span>Spring Boot</span>
               <span>Java</span>
+              <span>Spring Boot</span>
               <span>React JS</span>
               <span>MySQL</span>
-              <span>Ollama</span>
+              <span>Ollama LLM</span>
+              <span>REST API</span>
+              <span>Git</span>
             </div>
           </div>
 
           <div className="experience-item" data-aos="fade-up" data-aos-delay="100">
-            <h3>Stagiaire en Développement Web</h3>
-            <h4>Royal Air Maroc (RAM) | Juillet 2024 - Août 2024</h4>
+            <h3>Stagiaire Développeur Web</h3>
+            <h4>Royal Air Maroc (RAM) | Juillet 2024 – Août 2024 | Casablanca, Maroc</h4>
             <p>
-              Développement d'une application web centralisant la gestion des pièces, maintenances et rapports.
+              Développement d'une application de gestion centralisée des pièces et maintenances pour le secteur aéronautique.
             </p>
             <ul className="responsibilities">
               <li>Conception et modélisation UML du système</li>
-              <li>Développement du frontend et backend de l'application</li>
+              <li>Développement du frontend avec Thymeleaf et backend avec Spring Boot</li>
               <li>Intégration des fonctionnalités de planification de maintenance</li>
+              <li>Gestion de la base de données MySQL</li>
             </ul>
             <div className="tech-stack">
-              <span>Spring Boot</span>
               <span>Java</span>
+              <span>Spring Boot</span>
               <span>Thymeleaf</span>
               <span>MySQL</span>
+              <span>Git</span>
             </div>
           </div>
 
           <div className="experience-item" data-aos="fade-up" data-aos-delay="200">
-            <h3>Stagiaire en Développement Web</h3>
-            <h4>Safflait, Maroc | Août 2023 - Septembre 2023</h4>
+            <h3>Stagiaire Développeur Web</h3>
+            <h4>Safflait (Groupe Bel) | Août 2023 – Septembre 2023 | Casablanca, Maroc</h4>
             <p>
-              Développement d'un site de vente en ligne pour le secteur agroalimentaire.
+              Développement d'un site e-commerce dédié au secteur agroalimentaire.
             </p>
             <ul className="responsibilities">
               <li>Modélisation des systèmes avec UML</li>
-              <li>Développement du frontend et backend du site</li>
-              <li>Gestion de la base de données pour le suivi des commandes</li>
+              <li>Développement du frontend avec HTML/CSS/JavaScript et backend avec PHP</li>
+              <li>Gestion de la base de données MySQL pour le suivi des commandes</li>
+              <li>Intégration des fonctionnalités de paiement et gestion de stock</li>
             </ul>
             <div className="tech-stack">
               <span>PHP</span>
               <span>JavaScript</span>
+              <span>HTML/CSS</span>
               <span>MySQL</span>
             </div>
           </div>
@@ -257,17 +273,19 @@ function App() {
                   <li>C/C++</li>
                   <li>C#</li>
                   <li>JavaScript</li>
+                  <li>PHP</li>
                 </ul>
               </div>
               
               <div className="skill-category" data-aos="fade-up" data-aos-delay="100">
-                <h3>Technologies Web</h3>
+                <h3>Technologies & Frameworks</h3>
                 <ul>
                   <li>Spring Boot</li>
                   <li>React JS</li>
                   <li>Angular</li>
                   <li>Thymeleaf</li>
-                  <li>HTML/CSS</li>
+                  <li>Django</li>
+                  <li>REST API</li>
                 </ul>
               </div>
               
@@ -275,6 +293,7 @@ function App() {
                 <h3>Bases de Données</h3>
                 <ul>
                   <li>MySQL</li>
+                  <li>PostgreSQL</li>
                   <li>SQL Server</li>
                   <li>Oracle</li>
                 </ul>
@@ -283,10 +302,12 @@ function App() {
               <div className="skill-category" data-aos="fade-up" data-aos-delay="300">
                 <h3>Outils & Méthodologies</h3>
                 <ul>
+                  <li>Git / GitHub</li>
+                  <li>Agile / Scrum</li>
                   <li>UML</li>
-                  <li>Scrum</li>
-                  <li>Git</li>
-                  <li>Linux</li>
+                  <li>CI/CD</li>
+                  <li>Jira</li>
+                  <li>IntelliJ / VS Code</li>
                 </ul>
               </div>
 
@@ -294,10 +315,11 @@ function App() {
                 <h3>Soft Skills</h3>
                 <ul>
                   <li>Esprit d'équipe</li>
-                  <li>Rigueur</li>
-                  <li>Communication</li>
-                  <li>Résolution de problèmes</li>
-                  <li>Adaptabilité</li>
+                  <li>Rigueur et autonomie</li>
+                  <li>Curiosité technique</li>
+                  <li>Gestion des priorités</li>
+                  <li>Résolution de problèmes complexes</li>
+                  <li>Communication efficace</li>
                 </ul>
               </div>
             </div>
@@ -322,6 +344,12 @@ function App() {
                   <div className="skill-level" style={{width: '75%'}}></div>
                 </div>
               </div>
+              <div className="language-item">
+                <span className="language-name">Allemand (A2 - En cours B1)</span>
+                <div className="skill-bar">
+                  <div className="skill-level" style={{width: '60%'}}></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -335,19 +363,20 @@ function App() {
             
             <div className="project-card" data-aos="fade-up">
               <div className="project-image">
-                <img src={aiImage} alt="Smart Recruter" />
+                <img src={aiImage} alt="Smart Recruiter" />
               </div>
-              <h3>Smart Recruter</h3>
+              <h3>Smart Recruiter</h3>
               <p className="project-description">
-                Plateforme de recrutement intelligent utilisant l'IA pour matcher 
-                les compétences des candidats avec les offres d'emploi.
+                Plateforme de recrutement intelligent utilisant l'IA (LLM Ollama) pour matcher 
+                automatiquement les compétences des candidats avec les offres d'emploi.
               </p>
               <div className="project-tech">
-                <span>Angular</span>
+                <span>React JS</span>
                 <span>Spring Boot</span>
                 <span>MySQL</span>
-                <span>Ollama (IA)</span>
+                <span>Ollama LLM</span>
                 <span>NLP</span>
+                <span>REST API</span>
               </div>
               <a href="#" className="project-link">
                 <span>Voir le projet</span>
@@ -362,11 +391,16 @@ function App() {
                 <img src={webDevImage} alt="BookHub" />
               </div>
               <h3>BookHub</h3>
-              <p className="project-description">Plateforme Web de distribution et gestion d'E-Books</p>
+              <p className="project-description">
+                Plateforme complète de gestion et distribution d'E-Books avec système 
+                de recommandation et gestion des droits d'auteur.
+              </p>
               <div className="project-tech">
-                <span>React</span>
+                <span>React JS</span>
                 <span>Spring Boot</span>
                 <span>MySQL</span>
+                <span>JWT</span>
+                <span>Microservices</span>
               </div>
               <a href="#" className="project-link">
                 <span>Voir le projet</span>
@@ -381,10 +415,39 @@ function App() {
                 <img src={mobileDevImage} alt="QuizzApp" />
               </div>
               <h3>QuizzApp</h3>
-              <p className="project-description">Application mobile de quizz pour le permis de conduire</p>
+              <p className="project-description">
+                Application mobile de quiz interactif pour la préparation au permis de conduire 
+                avec suivi des progrès et statistiques détaillées.
+              </p>
               <div className="project-tech">
-                <span>React Native</span>
+                <span>Android (Java)</span>
                 <span>Firebase</span>
+                <span>SQLite</span>
+                <span>Material Design</span>
+              </div>
+              <a href="#" className="project-link">
+                <span>Voir le projet</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <div className="project-card" data-aos="fade-up" data-aos-delay="300">
+              <div className="project-image">
+                <img src={aiImage} alt="FiTTrack" />
+              </div>
+              <h3>FiTTrack Web App</h3>
+              <p className="project-description">
+                Application web de calcul de calories et suivi nutritionnel avec 
+                recommandations personnalisées et suivi des objectifs de santé.
+              </p>
+              <div className="project-tech">
+                <span>React JS</span>
+                <span>Node.js</span>
+                <span>MongoDB</span>
+                <span>Chart.js</span>
+                <span>JWT Auth</span>
               </div>
               <a href="#" className="project-link">
                 <span>Voir le projet</span>
@@ -436,7 +499,7 @@ function App() {
               <div className="certification-image">
                 <img src={umlCert} alt="Certification UML" />
                 <div className="certification-overlay">
-                  <h3>Modeling Software Systems using UML</h3>
+                  <h3>Software Engineering: Modeling Software Systems using UML</h3>
                   <p>Coursera</p>
                 </div>
               </div>
@@ -531,6 +594,7 @@ function App() {
       <footer className="footer">
         <div className="container">
           <p>&copy; {new Date().getFullYear()} Taha Hilal Bik. Tous droits réservés.</p>
+          <p>Ingénieur d'État en Génie Informatique et Réseaux - MIAGE</p>
         </div>
       </footer>
     </div>
