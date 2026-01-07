@@ -139,7 +139,8 @@ function App() {
                 style={{ 
                   border: 'none', 
                   boxShadow: 'none',
-                  outline: 'none'
+                  outline: 'none',
+                  
                 }}
               />
             </div>
@@ -350,13 +351,13 @@ function App() {
                 </div>
               </div>
               <div className="language-item">
-                <span className="language-name">Anglais (Intermédiaire)</span>
+                <span className="language-name">Anglais (Opérationnel)</span>
                 <div className="skill-bar">
                   <div className="skill-level" style={{width: '75%'}}></div>
                 </div>
               </div>
               <div className="language-item">
-                <span className="language-name">Allemand (A2 - En cours B1)</span>
+                <span className="language-name">Allemand (Intermédiaire niveau B1)</span>
                 <div className="skill-bar">
                   <div className="skill-level" style={{width: '60%'}}></div>
                 </div>
