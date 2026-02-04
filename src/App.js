@@ -4,7 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-// Import des images (heroImage est utilisé dans la section hero, donc gardez-le)
+// Import des images
 import webDevImage from './images/web-development.jpg';
 import mobileDevImage from './images/mobile-development.jpg';
 import aiImage from './images/ai.jpg';
@@ -16,14 +16,14 @@ import umlCert from './images/uml-cert.jpg.png';
 import agileCert from './images/agile-cert.jpg.png';
 import frenchCert from './images/french-cert.jpg.png';
 
-// URLs des drapeaux (solution externe pour éviter les erreurs d'import)
+// URLs des drapeaux
 const flagUrls = {
   fr: 'https://flagcdn.com/w320/fr.png',
   en: 'https://flagcdn.com/w320/gb.png',
   de: 'https://flagcdn.com/w320/de.png'
 };
 
-// Fichier de traductions
+// Fichier de traductions (inchangé)
 const translations = {
   fr: {
     nav: {
@@ -559,7 +559,7 @@ const translations = {
         },
         {
           title: "BookHub",
-          description: "Komplette E-Book-Management- und Vertriebsplattform mit Empfehlungssystem und Urheberrechtsverwaltung.",
+          description: "Komplette E-Book-Management- und Vertriebsplattform mit Empfehlungssystem et Urheberrechtsverwaltung.",
           tech: ["React JS", "Spring Boot", "MySQL", "JWT", "Microservices"],
           viewProject: "Projekt ansehen"
         },
@@ -760,7 +760,7 @@ function App() {
           </div>
           
           <div className="nav-actions">
-            {/* Language Selector */}
+            {/* Language Selector - Toujours visible */}
             <div className="language-selector">
               <button 
                 className={`language-btn ${language === 'fr' ? 'active' : ''}`}
@@ -805,7 +805,7 @@ function App() {
               )}
             </button>
             
-            <button className="menu-toggle" onClick={toggleMenu}>
+            <button className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
               <span></span>
               <span></span>
               <span></span>
@@ -841,13 +841,6 @@ function App() {
                 </svg>
                 {t.hero.downloadCV}
               </button>
-            </div>
-            <div className="cv-language-info">
-              <small>
-                {language === 'fr' && 'CV disponible en français'}
-                {language === 'en' && 'CV available in English'}
-                {language === 'de' && 'Lebenslauf verfügbar auf Deutsch'}
-              </small>
             </div>
           </div>
           <div className="hero-image" data-aos="fade-left" data-aos-delay="200">
@@ -978,12 +971,9 @@ function App() {
                     <span key={idx}>{tech}</span>
                   ))}
                 </div>
-                {/* CORRECTION : remplacé href="#" par un bouton */}
                 <button 
                   className="project-link"
                   onClick={() => {
-                    // Vous pouvez ajouter ici la logique pour voir le projet
-                    // Par exemple : window.open('https://github.com/username/project', '_blank');
                     alert(`${project.viewProject} - ${language === 'fr' ? 'Cette fonctionnalité sera bientôt disponible' : 
                            language === 'en' ? 'This feature will be available soon' : 
                            'Diese Funktion wird bald verfügbar sein'}`);
