@@ -4,8 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-// Import des images
-import heroImage from './images/hero-image.jpg';
+// Import des images (heroImage est utilisé dans la section hero, donc gardez-le)
 import webDevImage from './images/web-development.jpg';
 import mobileDevImage from './images/mobile-development.jpg';
 import aiImage from './images/ai.jpg';
@@ -19,7 +18,7 @@ import frenchCert from './images/french-cert.jpg.png';
 
 // URLs des drapeaux (solution externe pour éviter les erreurs d'import)
 const flagUrls = {
- fr: 'https://flagcdn.com/w320/fr.png',
+  fr: 'https://flagcdn.com/w320/fr.png',
   en: 'https://flagcdn.com/w320/gb.png',
   de: 'https://flagcdn.com/w320/de.png'
 };
@@ -979,12 +978,35 @@ function App() {
                     <span key={idx}>{tech}</span>
                   ))}
                 </div>
-                <a href="#" className="project-link">
+                {/* CORRECTION : remplacé href="#" par un bouton */}
+                <button 
+                  className="project-link"
+                  onClick={() => {
+                    // Vous pouvez ajouter ici la logique pour voir le projet
+                    // Par exemple : window.open('https://github.com/username/project', '_blank');
+                    alert(`${project.viewProject} - ${language === 'fr' ? 'Cette fonctionnalité sera bientôt disponible' : 
+                           language === 'en' ? 'This feature will be available soon' : 
+                           'Diese Funktion wird bald verfügbar sein'}`);
+                  }}
+                  style={{
+                    background: 'none',
+                    border: '2px solid white',
+                    color: 'white',
+                    padding: '0.8rem 1.5rem',
+                    borderRadius: '30px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontFamily: 'inherit',
+                    fontSize: 'inherit'
+                  }}
+                >
                   <span>{project.viewProject}</span>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </a>
+                </button>
               </div>
             ))}
           </div>
