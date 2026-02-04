@@ -17,10 +17,12 @@ import umlCert from './images/uml-cert.jpg.png';
 import agileCert from './images/agile-cert.jpg.png';
 import frenchCert from './images/french-cert.jpg.png';
 
-// Import des drapeaux
-import frFlag from './images/fr-flag.png';
-import enFlag from './images/en-flag.png';
-import deFlag from './images/de-flag.png';
+// URLs des drapeaux (solution externe pour éviter les erreurs d'import)
+const flagUrls = {
+ fr: 'https://flagcdn.com/w320/fr.png',
+  en: 'https://flagcdn.com/w320/gb.png',
+  de: 'https://flagcdn.com/w320/de.png'
+};
 
 // Fichier de traductions
 const translations = {
@@ -629,6 +631,20 @@ const translations = {
   }
 };
 
+// Chemins des CV selon la langue
+const cvPaths = {
+  fr: process.env.PUBLIC_URL + '/CV_Taha_Hilal_Bik.pdf',
+  en: process.env.PUBLIC_URL + '/Taha_HILAL_BIK_CV_English.pdf',
+  de: process.env.PUBLIC_URL + '/Taha_HILAL_BIK_CV_Deutsh.pdf'
+};
+
+// Noms des fichiers CV pour le téléchargement
+const cvFileNames = {
+  fr: 'CV_Taha_Hilal_Bik.pdf',
+  en: 'Taha_HILAL_BIK_CV_English.pdf',
+  de: 'Taha_HILAL_BIK_CV_Deutsch.pdf'
+};
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -679,42 +695,49 @@ function App() {
     setMenuOpen(false);
   };
 
-  // Fonction pour visualiser le CV dans un nouvel onglet
+  // Fonction pour visualiser le CV dans un nouvel onglet selon la langue
   const viewCV = () => {
     try {
-      const cvPath = process.env.PUBLIC_URL + '/CV_Taha_Hilal_Bik.pdf';
+      const cvPath = cvPaths[language];
       window.open(cvPath, '_blank', 'noopener,noreferrer');
     } catch (error) {
-      console.error('Error opening:', error);
-      alert(language === 'fr' ? 'Le CV n\'est pas disponible pour le moment. Veuillez me contacter directement.' :
-            language === 'en' ? 'The CV is not available at the moment. Please contact me directly.' :
-            'Der Lebenslauf ist derzeit nicht verfügbar. Bitte kontaktieren Sie mich direkt.');
+      console.error('Error opening CV:', error);
+      alert(
+        language === 'fr' ? 'Le CV n\'est pas disponible pour le moment. Veuillez me contacter directement.' :
+        language === 'en' ? 'The CV is not available at the moment. Please contact me directly.' :
+        'Der Lebenslauf ist derzeit nicht verfügbar. Bitte kontaktieren Sie mich direkt.'
+      );
     }
   };
 
-  // Fonction pour télécharger le CV
+  // Fonction pour télécharger le CV selon la langue
   const downloadCV = () => {
     try {
-      const cvPath = process.env.PUBLIC_URL + '/CV_Taha_Hilal_Bik.pdf';
+      const cvPath = cvPaths[language];
+      const fileName = cvFileNames[language];
       const link = document.createElement('a');
       link.href = cvPath;
-      link.download = 'CV_Taha_Hilal_Bik.pdf';
+      link.download = fileName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     } catch (error) {
       console.error('Download error:', error);
-      alert(language === 'fr' ? 'Le CV n\'est pas disponible pour le moment. Veuillez me contacter directement.' :
-            language === 'en' ? 'The CV is not available at the moment. Please contact me directly.' :
-            'Der Lebenslauf ist derzeit nicht verfügbar. Bitte kontaktieren Sie mich direkt.');
+      alert(
+        language === 'fr' ? 'Le CV n\'est pas disponible pour le moment. Veuillez me contacter directement.' :
+        language === 'en' ? 'The CV is not available at the moment. Please contact me directly.' :
+        'Der Lebenslauf ist derzeit nicht verfügbar. Bitte kontaktieren Sie mich direkt.'
+      );
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(language === 'fr' ? 'Message envoyé avec succès!' :
-          language === 'en' ? 'Message sent successfully!' :
-          'Nachricht erfolgreich gesendet!');
+    alert(
+      language === 'fr' ? 'Message envoyé avec succès!' :
+      language === 'en' ? 'Message sent successfully!' :
+      'Nachricht erfolgreich gesendet!'
+    );
   };
 
   return (
@@ -745,21 +768,21 @@ function App() {
                 onClick={() => changeLanguage('fr')}
                 title="Français"
               >
-                <img src={frFlag} alt="Français" className="language-flag" />
+                <img src={flagUrls.fr} alt="Français" className="language-flag" />
               </button>
               <button 
                 className={`language-btn ${language === 'en' ? 'active' : ''}`}
                 onClick={() => changeLanguage('en')}
                 title="English"
               >
-                <img src={enFlag} alt="English" className="language-flag" />
+                <img src={flagUrls.en} alt="English" className="language-flag" />
               </button>
               <button 
                 className={`language-btn ${language === 'de' ? 'active' : ''}`}
                 onClick={() => changeLanguage('de')}
                 title="Deutsch"
               >
-                <img src={deFlag} alt="Deutsch" className="language-flag" />
+                <img src={flagUrls.de} alt="Deutsch" className="language-flag" />
               </button>
             </div>
             
@@ -819,6 +842,13 @@ function App() {
                 </svg>
                 {t.hero.downloadCV}
               </button>
+            </div>
+            <div className="cv-language-info">
+              <small>
+                {language === 'fr' && 'CV disponible en français'}
+                {language === 'en' && 'CV available in English'}
+                {language === 'de' && 'Lebenslauf verfügbar auf Deutsch'}
+              </small>
             </div>
           </div>
           <div className="hero-image" data-aos="fade-left" data-aos-delay="200">
