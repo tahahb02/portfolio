@@ -9,7 +9,7 @@ import heroImage from './images/hero-image.jpg';
 import webDevImage from './images/web-development.jpg';
 import mobileDevImage from './images/mobile-development.jpg';
 import aiImage from './images/ai.jpg';
-import profileImage from './images/profile1.jpg'; // Votre photo de profil
+import profileImage from './images/profile1.jpg';
 import javaCert from './images/java-cert.jpg.png';
 import pythonCert from './images/python-cert.jpg.png';
 import reactCert from './images/react-cert.jpg.png';
@@ -17,9 +17,624 @@ import umlCert from './images/uml-cert.jpg.png';
 import agileCert from './images/agile-cert.jpg.png';
 import frenchCert from './images/french-cert.jpg.png';
 
+// Import des drapeaux
+import frFlag from './images/fr-flag.png';
+import enFlag from './images/en-flag.png';
+import deFlag from './images/de-flag.png';
+
+// Fichier de traductions
+const translations = {
+  fr: {
+    nav: {
+      home: "Accueil",
+      about: "À Propos",
+      experience: "Expérience",
+      skills: "Compétences",
+      projects: "Projets",
+      certifications: "Certifications",
+      contact: "Contact"
+    },
+    hero: {
+      title: "Taha Hilal Bik",
+      subtitle: "Ingénieur d'État en Génie Informatique et Réseaux - MIAGE",
+      description: "Spécialiste en développement full-stack avec Java Spring Boot et React, passionné par l'architecture logicielle et l'intégration de l'IA",
+      contact: "Me Contacter",
+      viewCV: "Visualiser CV",
+      downloadCV: "Télécharger CV"
+    },
+    about: {
+      title: "À Propos de Moi",
+      description1: "Ingénieur d'État en Génie Informatique et Réseaux, option MIAGE (Méthodes Informatiques Appliquées à la Gestion des Entreprises).",
+      description2: "Spécialisé en développement full-stack avec Java Spring Boot et React, je possède une forte volonté de contribuer au développement de solutions logicielles innovantes dans des secteurs exigeants comme l'aéronautique et l'agroalimentaire.",
+      description3: "Passionné par le développement web, mobile et l'architecture logicielle, je maîtrise les technologies modernes pour créer des applications performantes et intuitives.",
+      education: "Formation",
+      educationItems: [
+        {
+          title: "Ingénieur d'État en Génie Informatique et Réseaux",
+          subtitle: "Option MIAGE (Méthodes Informatiques Appliquées à la Gestion des Entreprises)",
+          date: "EMSI (2022-2025)"
+        },
+        {
+          title: "Années préparatoires",
+          subtitle: "",
+          date: "EMSI (2020-2022)"
+        },
+        {
+          title: "Baccalauréat physique chimie option français",
+          subtitle: "Mention Bien",
+          date: "(2019-2020)"
+        }
+      ],
+      imageCaptions: ["Développement Full-Stack", "Architecture Logicielle", "Intelligence Artificielle"]
+    },
+    experience: {
+      title: "Expérience Professionnelle",
+      experiences: [
+        {
+          title: "Stagiaire Développeur Full Stack – PFE",
+          company: "Web4Jobs",
+          period: "Mars 2025 – Août 2025 | Casablanca, Maroc",
+          description: "Développement d'une plateforme de gestion des patrimoines pour les centres de coding de l'entreprise au Maroc et en Afrique.",
+          responsibilities: [
+            "Analyse des besoins et modélisation UML du système",
+            "Développement Front-End avec ReactJS et Back-End avec Java Spring Boot",
+            "Intégration d'un module IA (Ollama LLM) pour la maintenance prédictive",
+            "Mise en place des API REST et gestion de la base de données MySQL"
+          ],
+          tech: ["Java", "Spring Boot", "React JS", "MySQL", "Ollama LLM", "REST API", "Git"]
+        },
+        {
+          title: "Stagiaire Développeur Web",
+          company: "Royal Air Maroc (RAM)",
+          period: "Juillet 2024 – Août 2024 | Casablanca, Maroc",
+          description: "Développement d'une application de gestion centralisée des pièces et maintenances pour le secteur aéronautique.",
+          responsibilities: [
+            "Conception et modélisation UML du système",
+            "Développement du frontend avec Thymeleaf et backend avec Spring Boot",
+            "Intégration des fonctionnalités de planification de maintenance",
+            "Gestion de la base de données MySQL"
+          ],
+          tech: ["Java", "Spring Boot", "Thymeleaf", "MySQL", "Git"]
+        },
+        {
+          title: "Stagiaire Développeur Web",
+          company: "Safflait (Groupe Bel)",
+          period: "Août 2023 – Septembre 2023 | Casablanca, Maroc",
+          description: "Développement d'un site e-commerce dédié au secteur agroalimentaire.",
+          responsibilities: [
+            "Modélisation des systèmes avec UML",
+            "Développement du frontend avec HTML/CSS/JavaScript et backend avec PHP",
+            "Gestion de la base de données MySQL pour le suivi des commandes",
+            "Intégration des fonctionnalités de paiement et gestion de stock"
+          ],
+          tech: ["PHP", "JavaScript", "HTML/CSS", "MySQL"]
+        }
+      ]
+    },
+    skills: {
+      title: "Mes Compétences",
+      categories: [
+        {
+          title: "Langages de Programmation",
+          items: ["Java", "Python", "C/C++", "C#", "JavaScript", "PHP"]
+        },
+        {
+          title: "Technologies & Frameworks",
+          items: ["Spring Boot", "React JS", "Angular", "Thymeleaf", "Django", "REST API"]
+        },
+        {
+          title: "Bases de Données",
+          items: ["MySQL", "PostgreSQL", "SQL Server", "Oracle"]
+        },
+        {
+          title: "Outils & Méthodologies",
+          items: ["Git / GitHub", "Agile / Scrum", "UML", "CI/CD", "Jira", "IntelliJ / VS Code"]
+        },
+        {
+          title: "Soft Skills",
+          items: ["Esprit d'équipe", "Rigueur et autonomie", "Curiosité technique", "Gestion des priorités", "Résolution de problèmes complexes", "Communication efficace"]
+        }
+      ],
+      languages: {
+        title: "Langues",
+        items: [
+          { name: "Arabe (Langue maternelle)", level: 100 },
+          { name: "Français (Bilingue)", level: 95 },
+          { name: "Anglais (Opérationnel)", level: 75 },
+          { name: "Allemand (Intermédiaire niveau B1)", level: 60 }
+        ]
+      }
+    },
+    projects: {
+      title: "Mes Projets",
+      projects: [
+        {
+          title: "Smart Recruiter",
+          description: "Plateforme de recrutement intelligent utilisant l'IA (LLM Ollama) pour matcher automatiquement les compétences des candidats avec les offres d'emploi.",
+          tech: ["React JS", "Spring Boot", "MySQL", "Ollama LLM", "NLP", "REST API"],
+          viewProject: "Voir le projet"
+        },
+        {
+          title: "BookHub",
+          description: "Plateforme complète de gestion et distribution d'E-Books avec système de recommandation et gestion des droits d'auteur.",
+          tech: ["React JS", "Spring Boot", "MySQL", "JWT", "Microservices"],
+          viewProject: "Voir le projet"
+        },
+        {
+          title: "QuizzApp",
+          description: "Application mobile de quiz interactif pour la préparation au permis de conduire avec suivi des progrès et statistiques détaillées.",
+          tech: ["Android (Java)", "Firebase", "SQLite", "Material Design"],
+          viewProject: "Voir le projet"
+        },
+        {
+          title: "FiTTrack Web App",
+          description: "Application web de calcul de calories et suivi nutritionnel avec recommandations personnalisées et suivi des objectifs de santé.",
+          tech: ["React JS", "Node.js", "MongoDB", "Chart.js", "JWT Auth"],
+          viewProject: "Voir le projet"
+        }
+      ]
+    },
+    certifications: {
+      title: "Mes Certifications",
+      certifications: [
+        {
+          title: "Introduction to Java and Object-Oriented Programming",
+          issuer: "Coursera"
+        },
+        {
+          title: "Python for Everybody",
+          issuer: "Coursera"
+        },
+        {
+          title: "React Basics",
+          issuer: "Coursera"
+        },
+        {
+          title: "Software Engineering: Modeling Software Systems using UML",
+          issuer: "Coursera"
+        },
+        {
+          title: "Agile with Atlassian Jira",
+          issuer: "Coursera"
+        },
+        {
+          title: "French Intermediate course B1-B2",
+          issuer: "Coursera"
+        }
+      ]
+    },
+    contact: {
+      title: "Contactez-moi",
+      info: "Informations de Contact",
+      email: "hilalbiktaha@gmail.com",
+      phone: "+212-691436399",
+      location: "Casablanca, Maroc",
+      form: {
+        name: "Votre nom",
+        email: "Votre email",
+        message: "Votre message",
+        send: "Envoyer"
+      },
+      social: {
+        linkedin: "LinkedIn",
+        github: "GitHub"
+      }
+    },
+    footer: {
+      copyright: "Taha Hilal Bik. Tous droits réservés.",
+      subtitle: "Ingénieur d'État en Génie Informatique et Réseaux - MIAGE"
+    }
+  },
+  en: {
+    nav: {
+      home: "Home",
+      about: "About",
+      experience: "Experience",
+      skills: "Skills",
+      projects: "Projects",
+      certifications: "Certifications",
+      contact: "Contact"
+    },
+    hero: {
+      title: "Taha Hilal Bik",
+      subtitle: "State Engineer in Computer Science and Networks - MIAGE",
+      description: "Full-stack development specialist with Java Spring Boot and React, passionate about software architecture and AI integration",
+      contact: "Contact Me",
+      viewCV: "View CV",
+      downloadCV: "Download CV"
+    },
+    about: {
+      title: "About Me",
+      description1: "State Engineer in Computer Science and Networks, MIAGE option (Computer Methods Applied to Business Management).",
+      description2: "Specialized in full-stack development with Java Spring Boot and React, I have a strong desire to contribute to the development of innovative software solutions in demanding sectors such as aeronautics and agri-food.",
+      description3: "Passionate about web development, mobile development and software architecture, I master modern technologies to create performant and intuitive applications.",
+      education: "Education",
+      educationItems: [
+        {
+          title: "State Engineer in Computer Science and Networks",
+          subtitle: "MIAGE option (Computer Methods Applied to Business Management)",
+          date: "EMSI (2022-2025)"
+        },
+        {
+          title: "Preparatory years",
+          subtitle: "",
+          date: "EMSI (2020-2022)"
+        },
+        {
+          title: "Baccalaureate in Physics-Chemistry with French option",
+          subtitle: "With Honors",
+          date: "(2019-2020)"
+        }
+      ],
+      imageCaptions: ["Full-Stack Development", "Software Architecture", "Artificial Intelligence"]
+    },
+    experience: {
+      title: "Professional Experience",
+      experiences: [
+        {
+          title: "Full Stack Developer Intern – Final Year Project",
+          company: "Web4Jobs",
+          period: "March 2025 – August 2025 | Casablanca, Morocco",
+          description: "Development of an asset management platform for the company's coding centers in Morocco and Africa.",
+          responsibilities: [
+            "Needs analysis and UML system modeling",
+            "Front-End development with ReactJS and Back-End with Java Spring Boot",
+            "Integration of an AI module (Ollama LLM) for predictive maintenance",
+            "Implementation of REST APIs and MySQL database management"
+          ],
+          tech: ["Java", "Spring Boot", "React JS", "MySQL", "Ollama LLM", "REST API", "Git"]
+        },
+        {
+          title: "Web Developer Intern",
+          company: "Royal Air Maroc (RAM)",
+          period: "July 2024 – August 2024 | Casablanca, Morocco",
+          description: "Development of a centralized parts and maintenance management application for the aeronautical sector.",
+          responsibilities: [
+            "System design and UML modeling",
+            "Frontend development with Thymeleaf and backend with Spring Boot",
+            "Integration of maintenance scheduling functionalities",
+            "MySQL database management"
+          ],
+          tech: ["Java", "Spring Boot", "Thymeleaf", "MySQL", "Git"]
+        },
+        {
+          title: "Web Developer Intern",
+          company: "Safflait (Bel Group)",
+          period: "August 2023 – September 2023 | Casablanca, Morocco",
+          description: "Development of an e-commerce website dedicated to the agri-food sector.",
+          responsibilities: [
+            "System modeling with UML",
+            "Frontend development with HTML/CSS/JavaScript and backend with PHP",
+            "MySQL database management for order tracking",
+            "Integration of payment and stock management functionalities"
+          ],
+          tech: ["PHP", "JavaScript", "HTML/CSS", "MySQL"]
+        }
+      ]
+    },
+    skills: {
+      title: "My Skills",
+      categories: [
+        {
+          title: "Programming Languages",
+          items: ["Java", "Python", "C/C++", "C#", "JavaScript", "PHP"]
+        },
+        {
+          title: "Technologies & Frameworks",
+          items: ["Spring Boot", "React JS", "Angular", "Thymeleaf", "Django", "REST API"]
+        },
+        {
+          title: "Databases",
+          items: ["MySQL", "PostgreSQL", "SQL Server", "Oracle"]
+        },
+        {
+          title: "Tools & Methodologies",
+          items: ["Git / GitHub", "Agile / Scrum", "UML", "CI/CD", "Jira", "IntelliJ / VS Code"]
+        },
+        {
+          title: "Soft Skills",
+          items: ["Team spirit", "Rigor and autonomy", "Technical curiosity", "Priority management", "Complex problem solving", "Effective communication"]
+        }
+      ],
+      languages: {
+        title: "Languages",
+        items: [
+          { name: "Arabic (Native)", level: 100 },
+          { name: "French (Bilingual)", level: 95 },
+          { name: "English (Operational)", level: 75 },
+          { name: "German (Intermediate B1 level)", level: 60 }
+        ]
+      }
+    },
+    projects: {
+      title: "My Projects",
+      projects: [
+        {
+          title: "Smart Recruiter",
+          description: "Intelligent recruitment platform using AI (LLM Ollama) to automatically match candidate skills with job offers.",
+          tech: ["React JS", "Spring Boot", "MySQL", "Ollama LLM", "NLP", "REST API"],
+          viewProject: "View Project"
+        },
+        {
+          title: "BookHub",
+          description: "Complete E-Book management and distribution platform with recommendation system and copyright management.",
+          tech: ["React JS", "Spring Boot", "MySQL", "JWT", "Microservices"],
+          viewProject: "View Project"
+        },
+        {
+          title: "QuizzApp",
+          description: "Interactive mobile quiz application for driver's license preparation with progress tracking and detailed statistics.",
+          tech: ["Android (Java)", "Firebase", "SQLite", "Material Design"],
+          viewProject: "View Project"
+        },
+        {
+          title: "FiTTrack Web App",
+          description: "Web application for calorie calculation and nutritional tracking with personalized recommendations and health goals tracking.",
+          tech: ["React JS", "Node.js", "MongoDB", "Chart.js", "JWT Auth"],
+          viewProject: "View Project"
+        }
+      ]
+    },
+    certifications: {
+      title: "My Certifications",
+      certifications: [
+        {
+          title: "Introduction to Java and Object-Oriented Programming",
+          issuer: "Coursera"
+        },
+        {
+          title: "Python for Everybody",
+          issuer: "Coursera"
+        },
+        {
+          title: "React Basics",
+          issuer: "Coursera"
+        },
+        {
+          title: "Software Engineering: Modeling Software Systems using UML",
+          issuer: "Coursera"
+        },
+        {
+          title: "Agile with Atlassian Jira",
+          issuer: "Coursera"
+        },
+        {
+          title: "French Intermediate course B1-B2",
+          issuer: "Coursera"
+        }
+      ]
+    },
+    contact: {
+      title: "Contact Me",
+      info: "Contact Information",
+      email: "hilalbiktaha@gmail.com",
+      phone: "+212-691436399",
+      location: "Casablanca, Morocco",
+      form: {
+        name: "Your name",
+        email: "Your email",
+        message: "Your message",
+        send: "Send"
+      },
+      social: {
+        linkedin: "LinkedIn",
+        github: "GitHub"
+      }
+    },
+    footer: {
+      copyright: "Taha Hilal Bik. All rights reserved.",
+      subtitle: "State Engineer in Computer Science and Networks - MIAGE"
+    }
+  },
+  de: {
+    nav: {
+      home: "Startseite",
+      about: "Über Mich",
+      experience: "Berufserfahrung",
+      skills: "Fähigkeiten",
+      projects: "Projekte",
+      certifications: "Zertifizierungen",
+      contact: "Kontakt"
+    },
+    hero: {
+      title: "Taha Hilal Bik",
+      subtitle: "Staatlich geprüfter Ingenieur für Informatik und Netzwerke - MIAGE",
+      description: "Full-Stack-Entwicklungsspezialist mit Java Spring Boot und React, leidenschaftlich für Softwarearchitektur und KI-Integration",
+      contact: "Kontaktieren Sie mich",
+      viewCV: "Lebenslauf ansehen",
+      downloadCV: "Lebenslauf herunterladen"
+    },
+    about: {
+      title: "Über Mich",
+      description1: "Staatlich geprüfter Ingenieur für Informatik und Netzwerke, Option MIAGE (Methoden der Informatik in der Unternehmensführung).",
+      description2: "Spezialisiert auf Full-Stack-Entwicklung mit Java Spring Boot und React, möchte ich zur Entwicklung innovativer Softwarelösungen in anspruchsvollen Sektoren wie Luftfahrt und Lebensmittelindustrie beitragen.",
+      description3: "Leidenschaftlich für Webentwicklung, Mobile Entwicklung und Softwarearchitektur, beherrsche ich moderne Technologien zur Erstellung performanter und intuitiver Anwendungen.",
+      education: "Ausbildung",
+      educationItems: [
+        {
+          title: "Staatlich geprüfter Ingenieur für Informatik und Netzwerke",
+          subtitle: "Option MIAGE (Methoden der Informatik in der Unternehmensführung)",
+          date: "EMSI (2022-2025)"
+        },
+        {
+          title: "Vorbereitungsjahre",
+          subtitle: "",
+          date: "EMSI (2020-2022)"
+        },
+        {
+          title: "Abitur Physik-Chemie mit Französisch als Option",
+          subtitle: "Mit Auszeichnung",
+          date: "(2019-2020)"
+        }
+      ],
+      imageCaptions: ["Full-Stack-Entwicklung", "Softwarearchitektur", "Künstliche Intelligenz"]
+    },
+    experience: {
+      title: "Berufserfahrung",
+      experiences: [
+        {
+          title: "Full-Stack-Entwickler Praktikum – Abschlussprojekt",
+          company: "Web4Jobs",
+          period: "März 2025 – August 2025 | Casablanca, Marokko",
+          description: "Entwicklung einer Plattform zur Vermögensverwaltung für die Coding-Zentren des Unternehmens in Marokko und Afrika.",
+          responsibilities: [
+            "Anforderungsanalyse und UML-Systemmodellierung",
+            "Front-End-Entwicklung mit ReactJS und Back-End mit Java Spring Boot",
+            "Integration eines KI-Moduls (Ollama LLM) für vorausschauende Wartung",
+            "Implementierung von REST-APIs und MySQL-Datenbankverwaltung"
+          ],
+          tech: ["Java", "Spring Boot", "React JS", "MySQL", "Ollama LLM", "REST API", "Git"]
+        },
+        {
+          title: "Web-Entwickler Praktikum",
+          company: "Royal Air Maroc (RAM)",
+          period: "Juli 2024 – August 2024 | Casablanca, Marokko",
+          description: "Entwicklung einer zentralisierten Anwendung zur Verwaltung von Teilen und Wartungen für den Luftfahrtsektor.",
+          responsibilities: [
+            "Systementwurf und UML-Modellierung",
+            "Frontend-Entwicklung mit Thymeleaf und Backend mit Spring Boot",
+            "Integration von Wartungsplanungsfunktionen",
+            "MySQL-Datenbankverwaltung"
+          ],
+          tech: ["Java", "Spring Boot", "Thymeleaf", "MySQL", "Git"]
+        },
+        {
+          title: "Web-Entwickler Praktikum",
+          company: "Safflait (Bel Group)",
+          period: "August 2023 – September 2023 | Casablanca, Marokko",
+          description: "Entwicklung einer E-Commerce-Website für den Lebensmittelsektor.",
+          responsibilities: [
+            "Systemmodellierung mit UML",
+            "Frontend-Entwicklung mit HTML/CSS/JavaScript und Backend mit PHP",
+            "MySQL-Datenbankverwaltung für Auftragsverfolgung",
+            "Integration von Zahlungs- und Bestandsverwaltungsfunktionen"
+          ],
+          tech: ["PHP", "JavaScript", "HTML/CSS", "MySQL"]
+        }
+      ]
+    },
+    skills: {
+      title: "Meine Fähigkeiten",
+      categories: [
+        {
+          title: "Programmiersprachen",
+          items: ["Java", "Python", "C/C++", "C#", "JavaScript", "PHP"]
+        },
+        {
+          title: "Technologien & Frameworks",
+          items: ["Spring Boot", "React JS", "Angular", "Thymeleaf", "Django", "REST API"]
+        },
+        {
+          title: "Datenbanken",
+          items: ["MySQL", "PostgreSQL", "SQL Server", "Oracle"]
+        },
+        {
+          title: "Tools & Methodologien",
+          items: ["Git / GitHub", "Agile / Scrum", "UML", "CI/CD", "Jira", "IntelliJ / VS Code"]
+        },
+        {
+          title: "Soft Skills",
+          items: ["Teamgeist", "Gründlichkeit und Selbständigkeit", "Technische Neugier", "Prioritätenmanagement", "Lösung komplexer Probleme", "Effektive Kommunikation"]
+        }
+      ],
+      languages: {
+        title: "Sprachen",
+        items: [
+          { name: "Arabisch (Muttersprache)", level: 100 },
+          { name: "Französisch (Zweisprachig)", level: 95 },
+          { name: "Englisch (Operativ)", level: 75 },
+          { name: "Deutsch (Mittelstufe B1)", level: 60 }
+        ]
+      }
+    },
+    projects: {
+      title: "Meine Projekte",
+      projects: [
+        {
+          title: "Smart Recruiter",
+          description: "Intelligente Rekrutierungsplattform mit KI (LLM Ollama) zur automatischen Zuordnung von Kandidatenfähigkeiten zu Stellenangeboten.",
+          tech: ["React JS", "Spring Boot", "MySQL", "Ollama LLM", "NLP", "REST API"],
+          viewProject: "Projekt ansehen"
+        },
+        {
+          title: "BookHub",
+          description: "Komplette E-Book-Management- und Vertriebsplattform mit Empfehlungssystem und Urheberrechtsverwaltung.",
+          tech: ["React JS", "Spring Boot", "MySQL", "JWT", "Microservices"],
+          viewProject: "Projekt ansehen"
+        },
+        {
+          title: "QuizzApp",
+          description: "Interaktive Mobile-Quiz-App für die Führerscheinvorbereitung mit Fortschrittsverfolgung und detaillierten Statistiken.",
+          tech: ["Android (Java)", "Firebase", "SQLite", "Material Design"],
+          viewProject: "Projekt ansehen"
+        },
+        {
+          title: "FiTTrack Web App",
+          description: "Web-App zur Kalorienberechnung und Ernährungstracking mit personalisierten Empfehlungen und Gesundheitszielverfolgung.",
+          tech: ["React JS", "Node.js", "MongoDB", "Chart.js", "JWT Auth"],
+          viewProject: "Projekt ansehen"
+        }
+      ]
+    },
+    certifications: {
+      title: "Meine Zertifizierungen",
+      certifications: [
+        {
+          title: "Introduction to Java and Object-Oriented Programming",
+          issuer: "Coursera"
+        },
+        {
+          title: "Python for Everybody",
+          issuer: "Coursera"
+        },
+        {
+          title: "React Basics",
+          issuer: "Coursera"
+        },
+        {
+          title: "Software Engineering: Modeling Software Systems using UML",
+          issuer: "Coursera"
+        },
+        {
+          title: "Agile with Atlassian Jira",
+          issuer: "Coursera"
+        },
+        {
+          title: "French Intermediate course B1-B2",
+          issuer: "Coursera"
+        }
+      ]
+    },
+    contact: {
+      title: "Kontaktieren Sie mich",
+      info: "Kontaktinformationen",
+      email: "hilalbiktaha@gmail.com",
+      phone: "+212-691436399",
+      location: "Casablanca, Marokko",
+      form: {
+        name: "Ihr Name",
+        email: "Ihre E-Mail",
+        message: "Ihre Nachricht",
+        send: "Senden"
+      },
+      social: {
+        linkedin: "LinkedIn",
+        github: "GitHub"
+      }
+    },
+    footer: {
+      copyright: "Taha Hilal Bik. Alle Rechte vorbehalten.",
+      subtitle: "Staatlich geprüfter Ingenieur für Informatik und Netzwerke - MIAGE"
+    }
+  }
+};
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [language, setLanguage] = useState('fr');
+
+  const t = translations[language];
 
   useEffect(() => {
     document.title = "Taha Hilal Bik - Portfolio";
@@ -34,6 +649,12 @@ function App() {
 
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setDarkMode(true);
+    }
+
+    // Détecter la langue du navigateur
+    const browserLang = navigator.language.split('-')[0];
+    if (['fr', 'en', 'de'].includes(browserLang)) {
+      setLanguage(browserLang);
     }
   }, []);
 
@@ -53,15 +674,21 @@ function App() {
     setMenuOpen(!menuOpen);
   };
 
+  const changeLanguage = (lang) => {
+    setLanguage(lang);
+    setMenuOpen(false);
+  };
+
   // Fonction pour visualiser le CV dans un nouvel onglet
   const viewCV = () => {
     try {
       const cvPath = process.env.PUBLIC_URL + '/CV_Taha_Hilal_Bik.pdf';
-      // Ouvrir le PDF dans un nouvel onglet
       window.open(cvPath, '_blank', 'noopener,noreferrer');
     } catch (error) {
-      console.error('Erreur d\'ouverture:', error);
-      alert('Le CV n\'est pas disponible pour le moment. Veuillez me contacter directement.');
+      console.error('Error opening:', error);
+      alert(language === 'fr' ? 'Le CV n\'est pas disponible pour le moment. Veuillez me contacter directement.' :
+            language === 'en' ? 'The CV is not available at the moment. Please contact me directly.' :
+            'Der Lebenslauf ist derzeit nicht verfügbar. Bitte kontaktieren Sie mich direkt.');
     }
   };
 
@@ -76,9 +703,18 @@ function App() {
       link.click();
       document.body.removeChild(link);
     } catch (error) {
-      console.error('Erreur de téléchargement:', error);
-      alert('Le CV n\'est pas disponible pour le moment. Veuillez me contacter directement.');
+      console.error('Download error:', error);
+      alert(language === 'fr' ? 'Le CV n\'est pas disponible pour le moment. Veuillez me contacter directement.' :
+            language === 'en' ? 'The CV is not available at the moment. Please contact me directly.' :
+            'Der Lebenslauf ist derzeit nicht verfügbar. Bitte kontaktieren Sie mich direkt.');
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(language === 'fr' ? 'Message envoyé avec succès!' :
+          language === 'en' ? 'Message sent successfully!' :
+          'Nachricht erfolgreich gesendet!');
   };
 
   return (
@@ -92,16 +728,41 @@ function App() {
           
           <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <ul>
-              <li><a href="#about" onClick={() => setMenuOpen(false)}>À Propos</a></li>
-              <li><a href="#experience" onClick={() => setMenuOpen(false)}>Expérience</a></li>
-              <li><a href="#skills" onClick={() => setMenuOpen(false)}>Compétences</a></li>
-              <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projets</a></li>
-              <li><a href="#certifications" onClick={() => setMenuOpen(false)}>Certifications</a></li>
-              <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+              <li><a href="#about" onClick={() => setMenuOpen(false)}>{t.nav.about}</a></li>
+              <li><a href="#experience" onClick={() => setMenuOpen(false)}>{t.nav.experience}</a></li>
+              <li><a href="#skills" onClick={() => setMenuOpen(false)}>{t.nav.skills}</a></li>
+              <li><a href="#projects" onClick={() => setMenuOpen(false)}>{t.nav.projects}</a></li>
+              <li><a href="#certifications" onClick={() => setMenuOpen(false)}>{t.nav.certifications}</a></li>
+              <li><a href="#contact" onClick={() => setMenuOpen(false)}>{t.nav.contact}</a></li>
             </ul>
           </div>
           
           <div className="nav-actions">
+            {/* Language Selector */}
+            <div className="language-selector">
+              <button 
+                className={`language-btn ${language === 'fr' ? 'active' : ''}`}
+                onClick={() => changeLanguage('fr')}
+                title="Français"
+              >
+                <img src={frFlag} alt="Français" className="language-flag" />
+              </button>
+              <button 
+                className={`language-btn ${language === 'en' ? 'active' : ''}`}
+                onClick={() => changeLanguage('en')}
+                title="English"
+              >
+                <img src={enFlag} alt="English" className="language-flag" />
+              </button>
+              <button 
+                className={`language-btn ${language === 'de' ? 'active' : ''}`}
+                onClick={() => changeLanguage('de')}
+                title="Deutsch"
+              >
+                <img src={deFlag} alt="Deutsch" className="language-flag" />
+              </button>
+            </div>
+            
             <button className="dark-mode-toggle" onClick={toggleDarkMode}>
               {darkMode ? (
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -131,15 +792,15 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero Section avec Photo de Profil */}
+      {/* Hero Section */}
       <section id="home" className="hero">
         <div className="container">
           <div className="hero-content" data-aos="fade-right" data-aos-delay="100">
-            <h1>Taha Hilal Bik</h1>
-            <h2>Ingénieur d'État en Génie Informatique et Réseaux - MIAGE</h2>
-            <p>Spécialiste en développement full-stack avec Java Spring Boot et React, passionné par l'architecture logicielle et l'intégration de l'IA</p>
+            <h1>{t.hero.title}</h1>
+            <h2>{t.hero.subtitle}</h2>
+            <p>{t.hero.description}</p>
             <div className="hero-buttons">
-              <a href="#contact" className="btn">Me Contacter</a>
+              <a href="#contact" className="btn">{t.hero.contact}</a>
               <button onClick={viewCV} className="btn btn-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px' }}>
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -148,7 +809,7 @@ function App() {
                   <line x1="16" y1="17" x2="8" y2="17"></line>
                   <polyline points="10 9 9 9 8 9"></polyline>
                 </svg>
-                Visualiser CV
+                {t.hero.viewCV}
               </button>
               <button onClick={downloadCV} className="btn btn-outline">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px' }}>
@@ -156,7 +817,7 @@ function App() {
                   <polyline points="7 10 12 15 17 10"></polyline>
                   <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
-                Télécharger CV
+                {t.hero.downloadCV}
               </button>
             </div>
           </div>
@@ -164,13 +825,12 @@ function App() {
             <div className="profile-image-container">
               <img 
                 src={profileImage} 
-                alt="Taha Hilal Bik - Ingénieur en Génie Informatique" 
+                alt={`${t.hero.title} - ${t.hero.subtitle}`} 
                 className="profile-image"
                 style={{ 
                   border: 'none', 
                   boxShadow: 'none',
                   outline: 'none',
-                  
                 }}
               />
             </div>
@@ -181,49 +841,33 @@ function App() {
       {/* About Section */}
       <section id="about" className="section">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">À Propos de Moi</h2>
+          <h2 className="section-title" data-aos="fade-up">{t.about.title}</h2>
           <div className="about-content">
             <div className="about-text" data-aos="fade-right">
-              <p>
-                Ingénieur d'État en Génie Informatique et Réseaux, option MIAGE (Méthodes Informatiques Appliquées à la Gestion des Entreprises).
-                Spécialisé en développement full-stack avec Java Spring Boot et React, je possède une forte volonté de contribuer au développement 
-                de solutions logicielles innovantes dans des secteurs exigeants comme l'aéronautique et l'agroalimentaire.
-                Passionné par le développement web, mobile et l'architecture logicielle, je maîtrise les technologies modernes 
-                pour créer des applications performantes et intuitives.
-              </p>
+              <p>{t.about.description1}</p>
+              <p>{t.about.description2}</p>
+              <p>{t.about.description3}</p>
               
               <div className="about-images">
-                <div className="image-card" data-aos="zoom-in">
-                  <img src={webDevImage} alt="Développement Web" />
-                  <div className="image-caption">Développement Full-Stack</div>
-                </div>
-                <div className="image-card" data-aos="zoom-in" data-aos-delay="200">
-                  <img src={mobileDevImage} alt="Développement Mobile" />
-                  <div className="image-caption">Architecture Logicielle</div>
-                </div>
-                <div className="image-card" data-aos="zoom-in" data-aos-delay="400">
-                  <img src={aiImage} alt="Intelligence Artificielle" />
-                  <div className="image-caption">Intelligence Artificielle</div>
-                </div>
+                {t.about.imageCaptions.map((caption, index) => (
+                  <div className="image-card" data-aos="zoom-in" data-aos-delay={index * 200} key={index}>
+                    <img src={[webDevImage, mobileDevImage, aiImage][index]} alt={caption} />
+                    <div className="image-caption">{caption}</div>
+                  </div>
+                ))}
               </div>
             </div>
             
             <div className="education" data-aos="fade-left">
-              <h3>Formation</h3>
+              <h3>{t.about.education}</h3>
               <ul>
-                <li>
-                  <strong>Ingénieur d'État en Génie Informatique et Réseaux</strong>
-                  <span>Option MIAGE (Méthodes Informatiques Appliquées à la Gestion des Entreprises)</span>
-                  <span>EMSI (2022-2025)</span>
-                </li>
-                <li>
-                  <strong>Années préparatoires</strong>
-                  <span>EMSI (2020-2022)</span>
-                </li>
-                <li>
-                  <strong>Baccalauréat physique chimie option français</strong>
-                  <span>Mention Bien (2019-2020)</span>
-                </li>
+                {t.about.educationItems.map((item, index) => (
+                  <li key={index}>
+                    <strong>{item.title}</strong>
+                    {item.subtitle && <span>{item.subtitle}</span>}
+                    <span>{item.date}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -233,165 +877,56 @@ function App() {
       {/* Experience Section */}
       <section id="experience" className="section dark-bg">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Expérience Professionnelle</h2>
+          <h2 className="section-title" data-aos="fade-up">{t.experience.title}</h2>
           
-          <div className="experience-item" data-aos="fade-up">
-            <h3>Stagiaire Développeur Full Stack – PFE</h3>
-            <h4>Web4Jobs | Mars 2025 – Août 2025 | Casablanca, Maroc</h4>
-            <p>
-              Développement d'une plateforme de gestion des patrimoines pour les centres de coding de l'entreprise au Maroc et en Afrique.
-            </p>
-            <ul className="responsibilities">
-              <li>Analyse des besoins et modélisation UML du système</li>
-              <li>Développement Front-End avec ReactJS et Back-End avec Java Spring Boot</li>
-              <li>Intégration d'un module IA (Ollama LLM) pour la maintenance prédictive</li>
-              <li>Mise en place des API REST et gestion de la base de données MySQL</li>
-            </ul>
-            <div className="tech-stack">
-              <span>Java</span>
-              <span>Spring Boot</span>
-              <span>React JS</span>
-              <span>MySQL</span>
-              <span>Ollama LLM</span>
-              <span>REST API</span>
-              <span>Git</span>
+          {t.experience.experiences.map((exp, index) => (
+            <div className="experience-item" data-aos="fade-up" data-aos-delay={index * 100} key={index}>
+              <h3>{exp.title}</h3>
+              <h4>{exp.company} | {exp.period}</h4>
+              <p>{exp.description}</p>
+              <ul className="responsibilities">
+                {exp.responsibilities.map((resp, idx) => (
+                  <li key={idx}>{resp}</li>
+                ))}
+              </ul>
+              <div className="tech-stack">
+                {exp.tech.map((tech, idx) => (
+                  <span key={idx}>{tech}</span>
+                ))}
+              </div>
             </div>
-          </div>
-
-          <div className="experience-item" data-aos="fade-up" data-aos-delay="100">
-            <h3>Stagiaire Développeur Web</h3>
-            <h4>Royal Air Maroc (RAM) | Juillet 2024 – Août 2024 | Casablanca, Maroc</h4>
-            <p>
-              Développement d'une application de gestion centralisée des pièces et maintenances pour le secteur aéronautique.
-            </p>
-            <ul className="responsibilities">
-              <li>Conception et modélisation UML du système</li>
-              <li>Développement du frontend avec Thymeleaf et backend avec Spring Boot</li>
-              <li>Intégration des fonctionnalités de planification de maintenance</li>
-              <li>Gestion de la base de données MySQL</li>
-            </ul>
-            <div className="tech-stack">
-              <span>Java</span>
-              <span>Spring Boot</span>
-              <span>Thymeleaf</span>
-              <span>MySQL</span>
-              <span>Git</span>
-            </div>
-          </div>
-
-          <div className="experience-item" data-aos="fade-up" data-aos-delay="200">
-            <h3>Stagiaire Développeur Web</h3>
-            <h4>Safflait (Groupe Bel) | Août 2023 – Septembre 2023 | Casablanca, Maroc</h4>
-            <p>
-              Développement d'un site e-commerce dédié au secteur agroalimentaire.
-            </p>
-            <ul className="responsibilities">
-              <li>Modélisation des systèmes avec UML</li>
-              <li>Développement du frontend avec HTML/CSS/JavaScript et backend avec PHP</li>
-              <li>Gestion de la base de données MySQL pour le suivi des commandes</li>
-              <li>Intégration des fonctionnalités de paiement et gestion de stock</li>
-            </ul>
-            <div className="tech-stack">
-              <span>PHP</span>
-              <span>JavaScript</span>
-              <span>HTML/CSS</span>
-              <span>MySQL</span>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* Skills Section */}
       <section id="skills" className="section">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Mes Compétences</h2>
+          <h2 className="section-title" data-aos="fade-up">{t.skills.title}</h2>
           <div className="skills-container">
             <div className="skills-grid">
-              <div className="skill-category" data-aos="fade-up">
-                <h3>Langages de Programmation</h3>
-                <ul>
-                  <li>Java</li>
-                  <li>Python</li>
-                  <li>C/C++</li>
-                  <li>C#</li>
-                  <li>JavaScript</li>
-                  <li>PHP</li>
-                </ul>
-              </div>
-              
-              <div className="skill-category" data-aos="fade-up" data-aos-delay="100">
-                <h3>Technologies & Frameworks</h3>
-                <ul>
-                  <li>Spring Boot</li>
-                  <li>React JS</li>
-                  <li>Angular</li>
-                  <li>Thymeleaf</li>
-                  <li>Django</li>
-                  <li>REST API</li>
-                </ul>
-              </div>
-              
-              <div className="skill-category" data-aos="fade-up" data-aos-delay="200">
-                <h3>Bases de Données</h3>
-                <ul>
-                  <li>MySQL</li>
-                  <li>PostgreSQL</li>
-                  <li>SQL Server</li>
-                  <li>Oracle</li>
-                </ul>
-              </div>
-              
-              <div className="skill-category" data-aos="fade-up" data-aos-delay="300">
-                <h3>Outils & Méthodologies</h3>
-                <ul>
-                  <li>Git / GitHub</li>
-                  <li>Agile / Scrum</li>
-                  <li>UML</li>
-                  <li>CI/CD</li>
-                  <li>Jira</li>
-                  <li>IntelliJ / VS Code</li>
-                </ul>
-              </div>
-
-              <div className="skill-category" data-aos="fade-up" data-aos-delay="400">
-                <h3>Soft Skills</h3>
-                <ul>
-                  <li>Esprit d'équipe</li>
-                  <li>Rigueur et autonomie</li>
-                  <li>Curiosité technique</li>
-                  <li>Gestion des priorités</li>
-                  <li>Résolution de problèmes complexes</li>
-                  <li>Communication efficace</li>
-                </ul>
-              </div>
+              {t.skills.categories.map((category, index) => (
+                <div className="skill-category" data-aos="fade-up" data-aos-delay={index * 100} key={index}>
+                  <h3>{category.title}</h3>
+                  <ul>
+                    {category.items.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
 
             <div className="languages-section" data-aos="fade-up" data-aos-delay="500">
-              <h3>Langues</h3>
-              <div className="language-item">
-                <span className="language-name">Arabe (Langue maternelle)</span>
-                <div className="skill-bar">
-                  <div className="skill-level" style={{width: '100%'}}></div>
+              <h3>{t.skills.languages.title}</h3>
+              {t.skills.languages.items.map((lang, index) => (
+                <div className="language-item" key={index}>
+                  <span className="language-name">{lang.name}</span>
+                  <div className="skill-bar">
+                    <div className="skill-level" style={{width: `${lang.level}%`}}></div>
+                  </div>
                 </div>
-              </div>
-              <div className="language-item">
-                <span className="language-name">Français (Bilingue)</span>
-                <div className="skill-bar">
-                  <div className="skill-level" style={{width: '95%'}}></div>
-                </div>
-              </div>
-              <div className="language-item">
-                <span className="language-name">Anglais (Opérationnel)</span>
-                <div className="skill-bar">
-                  <div className="skill-level" style={{width: '75%'}}></div>
-                </div>
-              </div>
-              <div className="language-item">
-                <span className="language-name">Allemand (Intermédiaire niveau B1)</span>
-                <div className="skill-bar">
-                  <div className="skill-level" style={{width: '60%'}}></div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -400,104 +935,28 @@ function App() {
       {/* Projects Section */}
       <section id="projects" className="section dark-bg">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Mes Projets</h2>
+          <h2 className="section-title" data-aos="fade-up">{t.projects.title}</h2>
           <div className="projects-grid">
-            
-            <div className="project-card" data-aos="fade-up">
-              <div className="project-image">
-                <img src={aiImage} alt="Smart Recruiter" />
+            {t.projects.projects.map((project, index) => (
+              <div className="project-card" data-aos="fade-up" data-aos-delay={index * 100} key={index}>
+                <div className="project-image">
+                  <img src={[aiImage, webDevImage, mobileDevImage, aiImage][index]} alt={project.title} />
+                </div>
+                <h3>{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+                <div className="project-tech">
+                  {project.tech.map((tech, idx) => (
+                    <span key={idx}>{tech}</span>
+                  ))}
+                </div>
+                <a href="#" className="project-link">
+                  <span>{project.viewProject}</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
               </div>
-              <h3>Smart Recruiter</h3>
-              <p className="project-description">
-                Plateforme de recrutement intelligent utilisant l'IA (LLM Ollama) pour matcher 
-                automatiquement les compétences des candidats avec les offres d'emploi.
-              </p>
-              <div className="project-tech">
-                <span>React JS</span>
-                <span>Spring Boot</span>
-                <span>MySQL</span>
-                <span>Ollama LLM</span>
-                <span>NLP</span>
-                <span>REST API</span>
-              </div>
-              <a href="#" className="project-link">
-                <span>Voir le projet</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            </div>
-            
-            <div className="project-card" data-aos="fade-up" data-aos-delay="100">
-              <div className="project-image">
-                <img src={webDevImage} alt="BookHub" />
-              </div>
-              <h3>BookHub</h3>
-              <p className="project-description">
-                Plateforme complète de gestion et distribution d'E-Books avec système 
-                de recommandation et gestion des droits d'auteur.
-              </p>
-              <div className="project-tech">
-                <span>React JS</span>
-                <span>Spring Boot</span>
-                <span>MySQL</span>
-                <span>JWT</span>
-                <span>Microservices</span>
-              </div>
-              <a href="#" className="project-link">
-                <span>Voir le projet</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            </div>
-            
-            <div className="project-card" data-aos="fade-up" data-aos-delay="200">
-              <div className="project-image">
-                <img src={mobileDevImage} alt="QuizzApp" />
-              </div>
-              <h3>QuizzApp</h3>
-              <p className="project-description">
-                Application mobile de quiz interactif pour la préparation au permis de conduire 
-                avec suivi des progrès et statistiques détaillées.
-              </p>
-              <div className="project-tech">
-                <span>Android (Java)</span>
-                <span>Firebase</span>
-                <span>SQLite</span>
-                <span>Material Design</span>
-              </div>
-              <a href="#" className="project-link">
-                <span>Voir le projet</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            </div>
-
-            <div className="project-card" data-aos="fade-up" data-aos-delay="300">
-              <div className="project-image">
-                <img src={aiImage} alt="FiTTrack" />
-              </div>
-              <h3>FiTTrack Web App</h3>
-              <p className="project-description">
-                Application web de calcul de calories et suivi nutritionnel avec 
-                recommandations personnalisées et suivi des objectifs de santé.
-              </p>
-              <div className="project-tech">
-                <span>React JS</span>
-                <span>Node.js</span>
-                <span>MongoDB</span>
-                <span>Chart.js</span>
-                <span>JWT Auth</span>
-              </div>
-              <a href="#" className="project-link">
-                <span>Voir le projet</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -505,67 +964,19 @@ function App() {
       {/* Certifications Section */}
       <section id="certifications" className="section">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Mes Certifications</h2>
+          <h2 className="section-title" data-aos="fade-up">{t.certifications.title}</h2>
           <div className="certifications-grid">
-            <div className="certification-card" data-aos="fade-up">
-              <div className="certification-image">
-                <img src={javaCert} alt="Certification Java" />
-                <div className="certification-overlay">
-                  <h3>Introduction to Java and Object-Oriented Programming</h3>
-                  <p>Coursera</p>
+            {t.certifications.certifications.map((cert, index) => (
+              <div className="certification-card" data-aos="fade-up" data-aos-delay={index * 100} key={index}>
+                <div className="certification-image">
+                  <img src={[javaCert, pythonCert, reactCert, umlCert, agileCert, frenchCert][index]} alt={cert.title} />
+                  <div className="certification-overlay">
+                    <h3>{cert.title}</h3>
+                    <p>{cert.issuer}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="certification-card" data-aos="fade-up" data-aos-delay="100">
-              <div className="certification-image">
-                <img src={pythonCert} alt="Certification Python" />
-                <div className="certification-overlay">
-                  <h3>Python for Everybody</h3>
-                  <p>Coursera</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="certification-card" data-aos="fade-up" data-aos-delay="200">
-              <div className="certification-image">
-                <img src={reactCert} alt="Certification React" />
-                <div className="certification-overlay">
-                  <h3>React Basics</h3>
-                  <p>Coursera</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="certification-card" data-aos="fade-up" data-aos-delay="300">
-              <div className="certification-image">
-                <img src={umlCert} alt="Certification UML" />
-                <div className="certification-overlay">
-                  <h3>Software Engineering: Modeling Software Systems using UML</h3>
-                  <p>Coursera</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="certification-card" data-aos="fade-up" data-aos-delay="400">
-              <div className="certification-image">
-                <img src={agileCert} alt="Certification Agile" />
-                <div className="certification-overlay">
-                  <h3>Agile with Atlassian Jira</h3>
-                  <p>Coursera</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="certification-card" data-aos="fade-up" data-aos-delay="500">
-              <div className="certification-image">
-                <img src={frenchCert} alt="Certification Français" />
-                <div className="certification-overlay">
-                  <h3>French Intermediate course B1-B2</h3>
-                  <p>Coursera</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -573,30 +984,30 @@ function App() {
       {/* Contact Section */}
       <section id="contact" className="section">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Contactez-moi</h2>
+          <h2 className="section-title" data-aos="fade-up">{t.contact.title}</h2>
           <div className="contact-content">
             <div className="contact-info" data-aos="fade-right">
-              <h3>Informations de Contact</h3>
+              <h3>{t.contact.info}</h3>
               <ul>
                 <li>
                   <svg className="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
-                  hilalbiktaha@gmail.com
+                  {t.contact.email}
                 </li>
                 <li>
                   <svg className="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
-                  +212-691436399
+                  {t.contact.phone}
                 </li>
                 <li>
                   <svg className="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
-                  Casablanca, Maroc
+                  {t.contact.location}
                 </li>
               </ul>
               <div className="social-links">
@@ -606,27 +1017,27 @@ function App() {
                     <rect x="2" y="9" width="4" height="12"></rect>
                     <circle cx="4" cy="4" r="2"></circle>
                   </svg>
-                  LinkedIn
+                  {t.contact.social.linkedin}
                 </a>
                 <a href="https://github.com/tahahb02" className="social-icon" target="_blank" rel="noopener noreferrer">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
-                  GitHub
+                  {t.contact.social.github}
                 </a>
               </div>
             </div>
-            <form className="contact-form" data-aos="fade-left">
+            <form className="contact-form" data-aos="fade-left" onSubmit={handleSubmit}>
               <div className="form-group">
-                <input type="text" placeholder="Votre nom" required />
+                <input type="text" placeholder={t.contact.form.name} required />
               </div>
               <div className="form-group">
-                <input type="email" placeholder="Votre email" required />
+                <input type="email" placeholder={t.contact.form.email} required />
               </div>
               <div className="form-group">
-                <textarea placeholder="Votre message" required></textarea>
+                <textarea placeholder={t.contact.form.message} required></textarea>
               </div>
-              <button type="submit" className="btn">Envoyer</button>
+              <button type="submit" className="btn">{t.contact.form.send}</button>
             </form>
           </div>
         </div>
@@ -635,8 +1046,8 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} Taha Hilal Bik. Tous droits réservés.</p>
-          <p>Ingénieur d'État en Génie Informatique et Réseaux - MIAGE</p>
+          <p>&copy; {new Date().getFullYear()} {t.footer.copyright}</p>
+          <p>{t.footer.subtitle}</p>
         </div>
       </footer>
     </div>
