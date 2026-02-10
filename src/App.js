@@ -23,7 +23,7 @@ const flagUrls = {
   de: 'https://flagcdn.com/w320/de.png'
 };
 
-// Fichier de traductions (inchangé)
+// Fichier de traductions (mis à jour avec les nouveaux projets)
 const translations = {
   fr: {
     nav: {
@@ -153,25 +153,31 @@ const translations = {
           title: "Smart Recruiter",
           description: "Plateforme de recrutement intelligent utilisant l'IA (LLM Ollama) pour matcher automatiquement les compétences des candidats avec les offres d'emploi.",
           tech: ["React JS", "Spring Boot", "MySQL", "Ollama LLM", "NLP", "REST API"],
-          viewProject: "Voir le projet"
+          viewProject: "Voir mes projets",
         },
         {
           title: "BookHub",
           description: "Plateforme complète de gestion et distribution d'E-Books avec système de recommandation et gestion des droits d'auteur.",
           tech: ["React JS", "Spring Boot", "MySQL", "JWT", "Microservices"],
-          viewProject: "Voir le projet"
+          viewProject: "Voir mes projets",
+        },
+        {
+          title: "Car Rental System",
+          description: "Application web complète de location de voiture en ligne avec réservation, gestion des véhicules, authentification et paiement.",
+          tech: ["Spring Boot", "Thymeleaf", "MySQL", "Spring Security", "Bootstrap"],
+          viewProject: "Voir mes projets",
         },
         {
           title: "QuizzApp",
           description: "Application mobile de quiz interactif pour la préparation au permis de conduire avec suivi des progrès et statistiques détaillées.",
           tech: ["Android (Java)", "Firebase", "SQLite", "Material Design"],
-          viewProject: "Voir le projet"
+          viewProject: "Voir mes projets",
         },
         {
           title: "FiTTrack Web App",
           description: "Application web de calcul de calories et suivi nutritionnel avec recommandations personnalisées et suivi des objectifs de santé.",
-          tech: ["React JS", "Node.js", "MongoDB", "Chart.js", "JWT Auth"],
-          viewProject: "Voir le projet"
+          tech: ["Django", "React JS", "MySQL", "Chart.js", "JWT Auth", "REST API"],
+          viewProject: "Voir mes projets",
         }
       ]
     },
@@ -354,25 +360,31 @@ const translations = {
           title: "Smart Recruiter",
           description: "Intelligent recruitment platform using AI (LLM Ollama) to automatically match candidate skills with job offers.",
           tech: ["React JS", "Spring Boot", "MySQL", "Ollama LLM", "NLP", "REST API"],
-          viewProject: "View Project"
+          viewProject: "View my projects",
         },
         {
           title: "BookHub",
           description: "Complete E-Book management and distribution platform with recommendation system and copyright management.",
           tech: ["React JS", "Spring Boot", "MySQL", "JWT", "Microservices"],
-          viewProject: "View Project"
+          viewProject: "View my projects",
+        },
+        {
+          title: "Car Rental System",
+          description: "Complete online car rental web application with booking, vehicle management, authentication and payment.",
+          tech: ["Spring Boot", "Thymeleaf", "MySQL", "Spring Security", "Bootstrap"],
+          viewProject: "View my projects",
         },
         {
           title: "QuizzApp",
           description: "Interactive mobile quiz application for driver's license preparation with progress tracking and detailed statistics.",
           tech: ["Android (Java)", "Firebase", "SQLite", "Material Design"],
-          viewProject: "View Project"
+          viewProject: "View my projects",
         },
         {
           title: "FiTTrack Web App",
           description: "Web application for calorie calculation and nutritional tracking with personalized recommendations and health goals tracking.",
-          tech: ["React JS", "Node.js", "MongoDB", "Chart.js", "JWT Auth"],
-          viewProject: "View Project"
+          tech: ["Django", "React JS", "MySQL", "Chart.js", "JWT Auth", "REST API"],
+          viewProject: "View my projects",
         }
       ]
     },
@@ -555,25 +567,31 @@ const translations = {
           title: "Smart Recruiter",
           description: "Intelligente Rekrutierungsplattform mit KI (LLM Ollama) zur automatischen Zuordnung von Kandidatenfähigkeiten zu Stellenangeboten.",
           tech: ["React JS", "Spring Boot", "MySQL", "Ollama LLM", "NLP", "REST API"],
-          viewProject: "Projekt ansehen"
+          viewProject: "Meine Projekte ansehen",
         },
         {
           title: "BookHub",
           description: "Komplette E-Book-Management- und Vertriebsplattform mit Empfehlungssystem et Urheberrechtsverwaltung.",
           tech: ["React JS", "Spring Boot", "MySQL", "JWT", "Microservices"],
-          viewProject: "Projekt ansehen"
+          viewProject: "Meine Projekte ansehen",
+        },
+        {
+          title: "Car Rental System",
+          description: "Komplette Online-Autovermietungs-Webanwendung mit Buchung, Fahrzeugverwaltung, Authentifizierung und Zahlung.",
+          tech: ["Spring Boot", "Thymeleaf", "MySQL", "Spring Security", "Bootstrap"],
+          viewProject: "Meine Projekte ansehen",
         },
         {
           title: "QuizzApp",
           description: "Interaktive Mobile-Quiz-App für die Führerscheinvorbereitung mit Fortschrittsverfolgung und detaillierten Statistiken.",
           tech: ["Android (Java)", "Firebase", "SQLite", "Material Design"],
-          viewProject: "Projekt ansehen"
+          viewProject: "Meine Projekte ansehen",
         },
         {
           title: "FiTTrack Web App",
           description: "Web-App zur Kalorienberechnung und Ernährungstracking mit personalisierten Empfehlungen und Gesundheitszielverfolgung.",
-          tech: ["React JS", "Node.js", "MongoDB", "Chart.js", "JWT Auth"],
-          viewProject: "Projekt ansehen"
+          tech: ["Django", "React JS", "MySQL", "Chart.js", "JWT Auth", "REST API"],
+          viewProject: "Meine Projekte ansehen",
         }
       ]
     },
@@ -643,6 +661,9 @@ const cvFileNames = {
   en: 'Taha_HILAL_BIK_CV_English.pdf',
   de: 'Taha_HILAL_BIK_CV_Deutsch.pdf'
 };
+
+// URL GitHub pour tous les projets
+const GITHUB_REPOS_URL = "https://github.com/tahahb02?tab=repositories";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -739,11 +760,16 @@ function App() {
     );
   };
 
+  // Fonction pour ouvrir le dashboard GitHub
+  const openGitHubProjects = () => {
+    window.open(GITHUB_REPOS_URL, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className={`portfolio ${darkMode ? 'dark' : ''}`}>
       <SpeedInsights />
       
-      {/* Navigation */}
+      {/* Navigation - Version Mobile corrigée */}
       <nav className="navbar">
         <div className="container">
           <a href="#home" className="logo">Taha Hilal Bik</a>
@@ -760,7 +786,7 @@ function App() {
           </div>
           
           <div className="nav-actions">
-            {/* Language Selector - Toujours visible */}
+            {/* Language Selector */}
             <div className="language-selector">
               <button 
                 className={`language-btn ${language === 'fr' ? 'active' : ''}`}
@@ -962,7 +988,7 @@ function App() {
             {t.projects.projects.map((project, index) => (
               <div className="project-card" data-aos="fade-up" data-aos-delay={index * 100} key={index}>
                 <div className="project-image">
-                  <img src={[aiImage, webDevImage, mobileDevImage, aiImage][index]} alt={project.title} />
+                  <img src={[aiImage, webDevImage, webDevImage, mobileDevImage, aiImage][index]} alt={project.title} />
                 </div>
                 <h3>{project.title}</h3>
                 <p className="project-description">{project.description}</p>
@@ -973,11 +999,7 @@ function App() {
                 </div>
                 <button 
                   className="project-link"
-                  onClick={() => {
-                    alert(`${project.viewProject} - ${language === 'fr' ? 'Cette fonctionnalité sera bientôt disponible' : 
-                           language === 'en' ? 'This feature will be available soon' : 
-                           'Diese Funktion wird bald verfügbar sein'}`);
-                  }}
+                  onClick={openGitHubProjects}
                   style={{
                     background: 'none',
                     border: '2px solid white',
@@ -989,13 +1011,24 @@ function App() {
                     alignItems: 'center',
                     gap: '8px',
                     fontFamily: 'inherit',
-                    fontSize: 'inherit'
+                    fontSize: 'inherit',
+                    transition: 'all 0.3s ease',
+                    width: '100%',
+                    justifyContent: 'center'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = 'white';
+                    e.target.style.color = 'black';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'none';
+                    e.target.style.color = 'white';
                   }}
                 >
-                  <span>{project.viewProject}</span>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
+                  <span>{project.viewProject}</span>
                 </button>
               </div>
             ))}
