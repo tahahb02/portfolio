@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import AOS from 'aos';
@@ -475,7 +475,7 @@ const translations = {
     },
     about: {
       title: "Über Mich",
-      description1: "Staatlich geprüfter Ingenieur für Informatik und Netzwerke, Option MIAGE (Methoden der Informatik in der Unternehmensführung).",
+      description1: "Staatlich geprüfter Ingenieur für Informatik et Netzwerke, Option MIAGE (Methoden der Informatik in der Unternehmensführung).",
       description2: "Spezialisiert auf Full-Stack-Entwicklung mit Java Spring Boot und React, möchte ich zur Entwicklung innovativer Softwarelösungen in anspruchsvollen Sektoren wie Luftfahrt und Lebensmittelindustrie beitragen.",
       description3: "Leidenschaftlich für Webentwicklung, Mobile Entwicklung und Softwarearchitektur, beherrsche ich moderne Technologien zur Erstellung performanter und intuitiver Anwendungen.",
       education: "Ausbildung",
@@ -694,12 +694,12 @@ const CertificationModal = ({ certification, onClose, language }) => {
   const t = translations[language];
   const [isClosing, setIsClosing] = useState(false);
   
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsClosing(true);
     setTimeout(() => {
       onClose();
     }, 300);
-  };
+  }, [onClose]);
   
   useEffect(() => {
     const handleEscape = (e) => {
@@ -721,7 +721,7 @@ const CertificationModal = ({ certification, onClose, language }) => {
       document.removeEventListener('keydown', handleEscape);
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
+  }, [handleClose]);
   
   if (!certification) return null;
 
