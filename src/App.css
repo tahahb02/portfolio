@@ -1289,7 +1289,7 @@ p {
 }
 
 [data-aos="zoom-in"] {
-  transform: scale(0.6);
+  transform: scale(0.6);  
 }
 
 [data-aos="flip-left"] {
@@ -1527,4 +1527,463 @@ p {
 .nav-actions {
   display: flex;
   align-items: center;
+}
+
+/* === MODAL AMÉLIORÉE POUR LES CERTIFICATIONS === */
+
+/* Overlay de la modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+  opacity: 0;
+  animation: modalFadeIn 0.3s ease forwards;
+}
+
+.modal-overlay.closing {
+  animation: modalFadeOut 0.3s ease forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Contenu de la modal */
+.modal-content {
+  background: var(--card-bg);
+  border-radius: 8px;
+  max-width: 95%;
+  max-height: 95vh;
+  width: auto;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: modalContentIn 0.3s ease 0.1s forwards;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content.closing {
+  animation: modalContentOut 0.3s ease forwards;
+}
+
+@keyframes modalContentIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modalContentOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* Bouton de fermeture */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: rotate(90deg);
+}
+
+.modal-close:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.modal-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* En-tête de la modal */
+.modal-header {
+  padding: 25px 25px 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--card-bg);
+}
+
+.modal-header h3 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+  color: var(--text-color);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.modal-issuer {
+  color: var(--primary-color);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Corps de la modal */
+.modal-body {
+  padding: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #f8f9fa;
+  min-height: 400px;
+}
+
+.dark .modal-body {
+  background: #1a1a1a;
+}
+
+.certification-image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.certification-full-image {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Pied de la modal */
+.modal-footer {
+  padding: 20px 25px;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--card-bg);
+}
+
+.modal-footer .btn-close {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.modal-footer .btn-close:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+/* Bouton "Voir la certification" (version simple) */
+.certification-view-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto 0;
+  transition: all 0.2s ease;
+  width: 100%;
+  max-width: 200px;
+}
+
+.certification-view-btn:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.certification-view-btn svg {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Améliorations pour les cartes de certification */
+.certification-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.certification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.certification-image {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.dark .certification-image {
+  background: #2a2a2a;
+}
+
+.certification-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.certification-card:hover .certification-image img {
+  transform: scale(1.05);
+}
+
+.certification-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 15px;
+  color: white;
+}
+
+.certification-overlay h4 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: white;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.certification-overlay p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  color: white;
+  margin: 0;
+}
+
+/* Mode sombre pour la modal */
+.dark .modal-content {
+  background: var(--nav-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .modal-header {
+  background: var(--nav-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .modal-footer {
+  background: var(--nav-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .modal-close {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.dark .modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.dark .certification-view-btn {
+  background: var(--primary-color);
+}
+
+.dark .certification-view-btn:hover {
+  background: var(--secondary-color);
+}
+
+/* Responsive pour la modal */
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 98%;
+    max-height: 90vh;
+  }
+  
+  .modal-header {
+    padding: 20px 20px 10px;
+  }
+  
+  .modal-header h3 {
+    font-size: 1.2rem;
+  }
+  
+  .modal-body {
+    min-height: 300px;
+  }
+  
+  .certification-full-image {
+    max-height: 60vh;
+  }
+  
+  .modal-close {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+  }
+  
+  .modal-close svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .certification-view-btn {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    max-width: 100%;
+    max-height: 95vh;
+    margin: 10px;
+  }
+  
+  .modal-header {
+    padding: 15px 15px 8px;
+  }
+  
+  .modal-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .modal-issuer {
+    font-size: 0.9rem;
+  }
+  
+  .modal-body {
+    min-height: 250px;
+  }
+  
+  .certification-full-image {
+    max-height: 50vh;
+  }
+  
+  .modal-footer {
+    padding: 15px;
+  }
+  
+  .modal-footer .btn-close {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Animation de chargement pour les images */
+.certification-image img {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.dark .certification-image img {
+  background: linear-gradient(90deg, #2c2c2c 25%, #3c3c3c 50%, #2c2c2c 75%);
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Empêche le défilement de l'arrière-plan quand la modal est ouverte */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Améliorations pour la grille des certifications */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .certifications-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 }

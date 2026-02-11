@@ -23,7 +23,7 @@ const flagUrls = {
   de: 'https://flagcdn.com/w320/de.png'
 };
 
-// Fichier de traductions (mis à jour avec les nouveaux projets)
+// Fichier de traductions
 const translations = {
   fr: {
     nav: {
@@ -183,30 +183,38 @@ const translations = {
     },
     certifications: {
       title: "Mes Certifications",
+      viewCert: "Voir la certification",
+      close: "Fermer",
       certifications: [
         {
           title: "Introduction to Java and Object-Oriented Programming",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: javaCert
         },
         {
           title: "Python for Everybody",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: pythonCert
         },
         {
           title: "React Basics",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: reactCert
         },
         {
           title: "Software Engineering: Modeling Software Systems using UML",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: umlCert
         },
         {
           title: "Agile with Atlassian Jira",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: agileCert
         },
         {
           title: "French Intermediate course B1-B2",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: frenchCert
         }
       ]
     },
@@ -390,30 +398,38 @@ const translations = {
     },
     certifications: {
       title: "My Certifications",
+      viewCert: "View certification",
+      close: "Close",
       certifications: [
         {
           title: "Introduction to Java and Object-Oriented Programming",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: javaCert
         },
         {
           title: "Python for Everybody",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: pythonCert
         },
         {
           title: "React Basics",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: reactCert
         },
         {
           title: "Software Engineering: Modeling Software Systems using UML",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: umlCert
         },
         {
           title: "Agile with Atlassian Jira",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: agileCert
         },
         {
           title: "French Intermediate course B1-B2",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: frenchCert
         }
       ]
     },
@@ -518,7 +534,7 @@ const translations = {
           description: "Entwicklung einer E-Commerce-Website für den Lebensmittelsektor.",
           responsibilities: [
             "Systemmodellierung mit UML",
-            "Frontend-Entwicklung mit HTML/CSS/JavaScript und Backend mit PHP",
+            "Frontend-Entwicklung mit HTML/CSS/JavaScript et Backend mit PHP",
             "MySQL-Datenbankverwaltung für Auftragsverfolgung",
             "Integration von Zahlungs- und Bestandsverwaltungsfunktionen"
           ],
@@ -597,30 +613,38 @@ const translations = {
     },
     certifications: {
       title: "Meine Zertifizierungen",
+      viewCert: "Zertifizierung ansehen",
+      close: "Schließen",
       certifications: [
         {
           title: "Introduction to Java and Object-Oriented Programming",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: javaCert
         },
         {
           title: "Python for Everybody",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: pythonCert
         },
         {
           title: "React Basics",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: reactCert
         },
         {
           title: "Software Engineering: Modeling Software Systems using UML",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: umlCert
         },
         {
           title: "Agile with Atlassian Jira",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: agileCert
         },
         {
           title: "French Intermediate course B1-B2",
-          issuer: "Coursera"
+          issuer: "Coursera",
+          image: frenchCert
         }
       ]
     },
@@ -665,10 +689,82 @@ const cvFileNames = {
 // URL GitHub pour tous les projets
 const GITHUB_REPOS_URL = "https://github.com/tahahb02?tab=repositories";
 
+// Composant Modal amélioré pour afficher les certifications
+const CertificationModal = ({ certification, onClose, language }) => {
+  const t = translations[language];
+  const [isClosing, setIsClosing] = useState(false);
+  
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 300);
+  };
+  
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        handleClose();
+      }
+    };
+    
+    const handleClickOutside = (e) => {
+      if (e.target.classList.contains('modal-overlay')) {
+        handleClose();
+      }
+    };
+    
+    document.addEventListener('keydown', handleEscape);
+    document.addEventListener('click', handleClickOutside);
+    
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+  
+  if (!certification) return null;
+
+  return (
+    <div className={`modal-overlay ${isClosing ? 'closing' : ''}`}>
+      <div className={`modal-content ${isClosing ? 'closing' : ''}`}>
+        <button className="modal-close" onClick={handleClose} aria-label="Fermer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        
+        <div className="modal-header">
+          <h3>{certification.title}</h3>
+          <p className="modal-issuer">{certification.issuer}</p>
+        </div>
+        
+        <div className="modal-body">
+          <div className="certification-image-container">
+            <img 
+              src={certification.image} 
+              alt={certification.title} 
+              className="certification-full-image"
+            />
+          </div>
+        </div>
+        
+        <div className="modal-footer">
+          <button className="btn btn-close" onClick={handleClose}>
+            {t.certifications.close}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState('fr');
+  const [selectedCert, setSelectedCert] = useState(null);
 
   const t = translations[language];
 
@@ -765,11 +861,32 @@ function App() {
     window.open(GITHUB_REPOS_URL, '_blank', 'noopener,noreferrer');
   };
 
+  // Fonction pour ouvrir une certification en grand format
+  const openCertification = (certification) => {
+    setSelectedCert(certification);
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Fonction pour fermer la modal
+  const closeCertification = () => {
+    setSelectedCert(null);
+    document.body.style.overflow = 'auto';
+  };
+
   return (
     <div className={`portfolio ${darkMode ? 'dark' : ''}`}>
       <SpeedInsights />
       
-      {/* Navigation - Version Mobile corrigée */}
+      {/* Modal pour afficher les certifications en grand format */}
+      {selectedCert && (
+        <CertificationModal 
+          certification={selectedCert} 
+          onClose={closeCertification}
+          language={language}
+        />
+      )}
+      
+      {/* Navigation */}
       <nav className="navbar">
         <div className="container">
           <a href="#home" className="logo">Taha Hilal Bik</a>
@@ -875,11 +992,6 @@ function App() {
                 src={profileImage} 
                 alt={`${t.hero.title} - ${t.hero.subtitle}`} 
                 className="profile-image"
-                style={{ 
-                  border: 'none', 
-                  boxShadow: 'none',
-                  outline: 'none',
-                }}
               />
             </div>
           </div>
@@ -1044,12 +1156,22 @@ function App() {
             {t.certifications.certifications.map((cert, index) => (
               <div className="certification-card" data-aos="fade-up" data-aos-delay={index * 100} key={index}>
                 <div className="certification-image">
-                  <img src={[javaCert, pythonCert, reactCert, umlCert, agileCert, frenchCert][index]} alt={cert.title} />
+                  <img src={cert.image} alt={cert.title} />
                   <div className="certification-overlay">
-                    <h3>{cert.title}</h3>
+                    <h4>{cert.title}</h4>
                     <p>{cert.issuer}</p>
                   </div>
                 </div>
+                <button 
+                  className="certification-view-btn"
+                  onClick={() => openCertification(cert)}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  {t.certifications.viewCert}
+                </button>
               </div>
             ))}
           </div>
