@@ -4,7 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-// Import des images
+// Import des images existantes
 import webDevImage from './images/web-development.jpg';
 import mobileDevImage from './images/mobile-development.jpg';
 import aiImage from './images/ai.jpg';
@@ -16,6 +16,17 @@ import umlCert from './images/uml-cert.jpg.png';
 import agileCert from './images/agile-cert.jpg.png';
 import frenchCert from './images/french-cert.jpg.png';
 
+// IMPORT DES NOUVELLES CERTIFICATIONS
+// Vous devrez ajouter ces images dans votre dossier ./images/
+import dockerCert from './images/docker-cert.png';
+import gitCert from './images/git-cert.png';
+import scrumCert from './images/scrum-cert.png';
+import reactNativeCert from './images/react-native-cert.png';
+import sapCert from './images/sap-cert.png';
+import unixCert from './images/unix-cert.png';
+import azureCert from './images/azure-cert.png';
+import interviewCert from './images/interview-cert.png';
+
 // URLs des drapeaux
 const flagUrls = {
   fr: 'https://flagcdn.com/w320/fr.png',
@@ -23,17 +34,7 @@ const flagUrls = {
   de: 'https://flagcdn.com/w320/de.png'
 };
 
-// Liens des certifications (dans l'ordre)
-const certLinks = [
-  "https://coursera.org/verify/E2G6LQ6RPKF9", // Java
-  "https://coursera.org/verify/specialization/YK2QFQMJJWM7", // Python
-  "https://coursera.org/verify/WDJRQJ5NBEKQ", // React
-  "https://coursera.org/verify/HR2PPS34TLCD", // UML
-  "https://coursera.org/verify/GJH6FXZ4ETZH", // Agile
-  "https://coursera.org/verify/C3ZB2U66SMKY"  // French
-];
-
-// Fichier de traductions
+// Fichier de traductions avec NOUVELLES CERTIFICATIONS
 const translations = {
   fr: {
     nav: {
@@ -196,7 +197,12 @@ const translations = {
       viewCert: "Voir la certification",
       viewOnCoursera: "Voir sur Coursera",
       close: "Fermer",
+      prevPage: "Page précédente",
+      nextPage: "Page suivante",
+      page: "Page",
+      of: "sur",
       certifications: [
+        // CERTIFICATIONS ORIGINALES (6)
         {
           title: "Introduction to Java and Object-Oriented Programming",
           issuer: "Coursera",
@@ -232,6 +238,55 @@ const translations = {
           issuer: "Coursera",
           image: frenchCert,
           link: "https://coursera.org/verify/C3ZB2U66SMKY"
+        },
+        // NOUVELLES CERTIFICATIONS (8)
+        {
+          title: "The Art of the Job Interview",
+          issuer: "Coursera",
+          image: interviewCert,
+          link: "https://coursera.org/verify/3AJL92LZQHMA"
+        },
+        {
+          title: "Introduction to Containers w/ Docker, Kubernetes & OpenShift",
+          issuer: "IBM",
+          image: dockerCert,
+          link: "https://coursera.org/verify/JPCMPMM7DLWN"
+        },
+        {
+          title: "Introduction to Git and GitHub",
+          issuer: "Google",
+          image: gitCert,
+          link: "https://coursera.org/verify/4Y2QNTXWZ3TA"
+        },
+        {
+          title: "Introduction to Scrum Master Profession",
+          issuer: "SkillUp EdTech",
+          image: scrumCert,
+          link: "https://coursera.org/verify/A9VN4R2L8GNX"
+        },
+        {
+          title: "React Native",
+          issuer: "Meta",
+          image: reactNativeCert,
+          link: "https://coursera.org/verify/QG4DDW76T3ZE"
+        },
+        {
+          title: "SAP Professional Fundamentals",
+          issuer: "SAP",
+          image: sapCert,
+          link: "https://coursera.org/verify/L39SE3WA25X7"
+        },
+        {
+          title: "Unix System Basics",
+          issuer: "Codio",
+          image: unixCert,
+          link: "https://coursera.org/verify/3N65C4HXS4PX"
+        },
+        {
+          title: "Virtual Networks in Azure",
+          issuer: "Whizlabs",
+          image: azureCert,
+          link: "https://coursera.org/verify/USVG5Y5QN7SX"
         }
       ]
     },
@@ -418,7 +473,12 @@ const translations = {
       viewCert: "View certification",
       viewOnCoursera: "View on Coursera",
       close: "Close",
+      prevPage: "Previous page",
+      nextPage: "Next page",
+      page: "Page",
+      of: "of",
       certifications: [
+        // ORIGINAL CERTIFICATIONS (6)
         {
           title: "Introduction to Java and Object-Oriented Programming",
           issuer: "Coursera",
@@ -454,6 +514,55 @@ const translations = {
           issuer: "Coursera",
           image: frenchCert,
           link: "https://coursera.org/verify/C3ZB2U66SMKY"
+        },
+        // NEW CERTIFICATIONS (8)
+        {
+          title: "The Art of the Job Interview",
+          issuer: "Coursera",
+          image: interviewCert,
+          link: "https://coursera.org/verify/3AJL92LZQHMA"
+        },
+        {
+          title: "Introduction to Containers w/ Docker, Kubernetes & OpenShift",
+          issuer: "IBM",
+          image: dockerCert,
+          link: "https://coursera.org/verify/JPCMPMM7DLWN"
+        },
+        {
+          title: "Introduction to Git and GitHub",
+          issuer: "Google",
+          image: gitCert,
+          link: "https://coursera.org/verify/4Y2QNTXWZ3TA"
+        },
+        {
+          title: "Introduction to Scrum Master Profession",
+          issuer: "SkillUp EdTech",
+          image: scrumCert,
+          link: "https://coursera.org/verify/A9VN4R2L8GNX"
+        },
+        {
+          title: "React Native",
+          issuer: "Meta",
+          image: reactNativeCert,
+          link: "https://coursera.org/verify/QG4DDW76T3ZE"
+        },
+        {
+          title: "SAP Professional Fundamentals",
+          issuer: "SAP",
+          image: sapCert,
+          link: "https://coursera.org/verify/L39SE3WA25X7"
+        },
+        {
+          title: "Unix System Basics",
+          issuer: "Codio",
+          image: unixCert,
+          link: "https://coursera.org/verify/3N65C4HXS4PX"
+        },
+        {
+          title: "Virtual Networks in Azure",
+          issuer: "Whizlabs",
+          image: azureCert,
+          link: "https://coursera.org/verify/USVG5Y5QN7SX"
         }
       ]
     },
@@ -640,7 +749,12 @@ const translations = {
       viewCert: "Zertifizierung ansehen",
       viewOnCoursera: "Auf Coursera ansehen",
       close: "Schließen",
+      prevPage: "Vorherige Seite",
+      nextPage: "Nächste Seite",
+      page: "Seite",
+      of: "von",
       certifications: [
+        // ORIGINAL CERTIFICATIONS (6)
         {
           title: "Introduction to Java and Object-Oriented Programming",
           issuer: "Coursera",
@@ -676,6 +790,55 @@ const translations = {
           issuer: "Coursera",
           image: frenchCert,
           link: "https://coursera.org/verify/C3ZB2U66SMKY"
+        },
+        // NEW CERTIFICATIONS (8)
+        {
+          title: "The Art of the Job Interview",
+          issuer: "Coursera",
+          image: interviewCert,
+          link: "https://coursera.org/verify/3AJL92LZQHMA"
+        },
+        {
+          title: "Introduction to Containers w/ Docker, Kubernetes & OpenShift",
+          issuer: "IBM",
+          image: dockerCert,
+          link: "https://coursera.org/verify/JPCMPMM7DLWN"
+        },
+        {
+          title: "Introduction to Git and GitHub",
+          issuer: "Google",
+          image: gitCert,
+          link: "https://coursera.org/verify/4Y2QNTXWZ3TA"
+        },
+        {
+          title: "Introduction to Scrum Master Profession",
+          issuer: "SkillUp EdTech",
+          image: scrumCert,
+          link: "https://coursera.org/verify/A9VN4R2L8GNX"
+        },
+        {
+          title: "React Native",
+          issuer: "Meta",
+          image: reactNativeCert,
+          link: "https://coursera.org/verify/QG4DDW76T3ZE"
+        },
+        {
+          title: "SAP Professional Fundamentals",
+          issuer: "SAP",
+          image: sapCert,
+          link: "https://coursera.org/verify/L39SE3WA25X7"
+        },
+        {
+          title: "Unix System Basics",
+          issuer: "Codio",
+          image: unixCert,
+          link: "https://coursera.org/verify/3N65C4HXS4PX"
+        },
+        {
+          title: "Virtual Networks in Azure",
+          issuer: "Whizlabs",
+          image: azureCert,
+          link: "https://coursera.org/verify/USVG5Y5QN7SX"
         }
       ]
     },
@@ -720,7 +883,7 @@ const cvFileNames = {
 // URL GitHub pour tous les projets
 const GITHUB_REPOS_URL = "https://github.com/tahahb02?tab=repositories";
 
-// Composant Modal amélioré pour afficher les certifications
+// Composant Modal pour afficher les certifications
 const CertificationModal = ({ certification, onClose, language }) => {
   const t = translations[language];
   const [isClosing, setIsClosing] = useState(false);
@@ -756,7 +919,6 @@ const CertificationModal = ({ certification, onClose, language }) => {
   
   if (!certification) return null;
 
-  // Fonction pour ouvrir le lien Coursera
   const openCourseraLink = () => {
     window.open(certification.link, '_blank', 'noopener,noreferrer');
   };
@@ -809,8 +971,17 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState('fr');
   const [selectedCert, setSelectedCert] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const certificationsPerPage = 6;
 
   const t = translations[language];
+  const allCertifications = t.certifications.certifications;
+  const totalPages = Math.ceil(allCertifications.length / certificationsPerPage);
+  
+  // Obtenir les certifications de la page courante
+  const indexOfLastCert = currentPage * certificationsPerPage;
+  const indexOfFirstCert = indexOfLastCert - certificationsPerPage;
+  const currentCertifications = allCertifications.slice(indexOfFirstCert, indexOfLastCert);
 
   // Ignorer les erreurs MetaMask
   useEffect(() => {
@@ -853,7 +1024,6 @@ function App() {
       setDarkMode(true);
     }
 
-    // Détecter la langue du navigateur
     const browserLang = navigator.language.split('-')[0];
     if (['fr', 'en', 'de'].includes(browserLang)) {
       setLanguage(browserLang);
@@ -868,6 +1038,11 @@ function App() {
     }
   }, [darkMode]);
 
+  // Reset à la page 1 quand on change de langue
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [language]);
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
@@ -881,7 +1056,6 @@ function App() {
     setMenuOpen(false);
   };
 
-  // Fonction pour visualiser le CV dans un nouvel onglet selon la langue
   const viewCV = () => {
     try {
       const cvPath = cvPaths[language];
@@ -896,7 +1070,6 @@ function App() {
     }
   };
 
-  // Fonction pour télécharger le CV selon la langue
   const downloadCV = () => {
     try {
       const cvPath = cvPaths[language];
@@ -926,26 +1099,45 @@ function App() {
     );
   };
 
-  // Fonction pour ouvrir le dashboard GitHub
   const openGitHubProjects = () => {
     window.open(GITHUB_REPOS_URL, '_blank', 'noopener,noreferrer');
   };
 
-  // Fonction pour ouvrir une certification en grand format
   const openCertification = (certification) => {
     setSelectedCert(certification);
     document.body.style.overflow = 'hidden';
   };
 
-  // Fonction pour fermer la modal
   const closeCertification = () => {
     setSelectedCert(null);
     document.body.style.overflow = 'auto';
   };
 
-  // Fonction pour ouvrir directement le lien Coursera
   const openCourseraLink = (link) => {
     window.open(link, '_blank', 'noopener,noreferrer');
+  };
+
+  // Fonctions de pagination
+  const goToPreviousPage = () => {
+    setCurrentPage(prev => Math.max(prev - 1, 1));
+    // Scroll vers le haut de la section certifications
+    setTimeout(() => {
+      document.getElementById('certifications').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
+  const goToNextPage = () => {
+    setCurrentPage(prev => Math.min(prev + 1, totalPages));
+    setTimeout(() => {
+      document.getElementById('certifications').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
+  const goToPage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setTimeout(() => {
+      document.getElementById('certifications').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   return (
@@ -1223,13 +1415,15 @@ function App() {
         </div>
       </section>
 
-      {/* Certifications Section */}
+      {/* Certifications Section avec PAGINATION */}
       <section id="certifications" className="section">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">{t.certifications.title}</h2>
+          
+          {/* Grille des certifications */}
           <div className="certifications-grid">
-            {t.certifications.certifications.map((cert, index) => (
-              <div className="certification-card" data-aos="fade-up" data-aos-delay={index * 100} key={index}>
+            {currentCertifications.map((cert, index) => (
+              <div className="certification-card" data-aos="fade-up" data-aos-delay={(index % 6) * 100} key={cert.link}>
                 <div className="certification-image">
                   <img src={cert.image} alt={cert.title} />
                   <div className="certification-overlay">
@@ -1263,6 +1457,51 @@ function App() {
               </div>
             ))}
           </div>
+
+          {/* PAGINATION - Design élégant et professionnel */}
+          {totalPages > 1 && (
+            <div className="pagination-container" data-aos="fade-up">
+              <div className="pagination">
+                <button 
+                  className={`pagination-btn prev ${currentPage === 1 ? 'disabled' : ''}`}
+                  onClick={goToPreviousPage}
+                  disabled={currentPage === 1}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                  {t.certifications.prevPage}
+                </button>
+
+                <div className="pagination-numbers">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
+                    <button
+                      key={number}
+                      className={`pagination-number ${currentPage === number ? 'active' : ''}`}
+                      onClick={() => goToPage(number)}
+                    >
+                      {number}
+                    </button>
+                  ))}
+                </div>
+
+                <button 
+                  className={`pagination-btn next ${currentPage === totalPages ? 'disabled' : ''}`}
+                  onClick={goToNextPage}
+                  disabled={currentPage === totalPages}
+                >
+                  {t.certifications.nextPage}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+              
+              <div className="pagination-info">
+                {t.certifications.page} {currentPage} {t.certifications.of} {totalPages} • {allCertifications.length} {t.certifications.title}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
