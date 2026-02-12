@@ -659,6 +659,7 @@ p {
   border-radius: 20px;
   font-size: 0.8rem;
   transition: all 0.3s ease;
+  color: white;
 }
 
 .tech-stack span:hover {
@@ -787,7 +788,7 @@ p {
   background: var(--accent-color);
 }
 
-/* Projects Section */
+/* Projects Section - CORRIGÉ */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -855,15 +856,33 @@ p {
   color: var(--primary-color);
 }
 
+/* CORRECTION: La description est toujours visible */
 .project-description {
   margin-bottom: 1.5rem;
-  color: var(--light-color);
+  color: rgba(255, 255, 255, 0.9);
   min-height: 60px;
   flex-grow: 1;
   transition: all 0.3s ease;
 }
 
 .project-card:hover .project-description {
+  color: white;
+}
+
+/* Mode sombre - Ajustements supplémentaires */
+.dark .project-description {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dark .project-card:hover .project-description {
+  color: white;
+}
+
+.dark-bg .project-description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-bg .project-card:hover .project-description {
   color: white;
 }
 
@@ -880,6 +899,7 @@ p {
   border-radius: 20px;
   font-size: 0.8rem;
   transition: all 0.3s ease;
+  color: white;
 }
 
 .project-card:hover .project-tech span {
