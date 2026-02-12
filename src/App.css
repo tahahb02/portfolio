@@ -10,6 +10,7 @@
   --bg-color: #f9f9f9;
   --card-bg: white;
   --nav-bg: white;
+  --coursera-color: #0056D2;
 }
 
 /* Dark Mode Variables */
@@ -23,6 +24,7 @@
   --bg-color: #121212;
   --card-bg: #1e1e1e;
   --nav-bg: #1a1a1a;
+  --coursera-color: #0066FF;
 }
 
 /* Base Styles */
@@ -196,7 +198,7 @@ p {
   gap: 1rem;
 }
 
-/* Language Selector - MODIFICATION IMPORTANTE */
+/* Language Selector */
 .language-selector {
   display: flex;
   align-items: center;
@@ -296,7 +298,7 @@ p {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* Hero Section - CORRECTED */
+/* Hero Section */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -788,7 +790,7 @@ p {
   background: var(--accent-color);
 }
 
-/* Projects Section - CORRIGÉ */
+/* Projects Section */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -856,7 +858,6 @@ p {
   color: var(--primary-color);
 }
 
-/* CORRECTION: La description est toujours visible */
 .project-description {
   margin-bottom: 1.5rem;
   color: rgba(255, 255, 255, 0.9);
@@ -869,7 +870,6 @@ p {
   color: white;
 }
 
-/* Mode sombre - Ajustements supplémentaires */
 .dark .project-description {
   color: rgba(255, 255, 255, 0.85);
 }
@@ -1078,7 +1078,7 @@ p {
   background: var(--dark-color);
 }
 
-/* Responsive Design - MODIFICATIONS IMPORTANTES POUR MOBILE */
+/* Responsive Design */
 @media (max-width: 1024px) {
   .skills-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -1322,31 +1322,61 @@ p {
   opacity: 1;
 }
 
-/* Certifications Section */
+/* === CERTIFICATIONS SECTION - BOUTONS GRIS CLAIR VERS BLANC === */
 .certifications-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  padding: 1rem 0;
 }
 
 .certification-card {
   position: relative;
-  border-radius: 10px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: cardFadeIn 0.6s ease forwards;
 }
 
 .certification-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(52, 152, 219, 0.3);
+  border-color: var(--primary-color);
+}
+
+/* Effet de brillance au survol */
+.certification-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.8s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.certification-card:hover::after {
+  left: 100%;
 }
 
 .certification-image {
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .certification-image img {
@@ -1357,33 +1387,277 @@ p {
 }
 
 .certification-card:hover .certification-image img {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
+/* Overlay avec dégradé amélioré */
 .certification-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-  padding: 2rem 1.5rem;
+  background: linear-gradient(to top, 
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.8) 50%,
+    transparent 100%
+  );
+  padding: 2rem 1.5rem 1.5rem;
   color: white;
   transform: translateY(100%);
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .certification-card:hover .certification-overlay {
   transform: translateY(0);
 }
 
-.certification-overlay h3 {
-  font-size: 1.2rem;
+.certification-overlay h4 {
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.3;
 }
 
 .certification-overlay p {
-  font-size: 0.9rem;
-  opacity: 0.8;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  color: white;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* BOUTONS GRIS CLAIR VERS BLANC - TAILLE RÉDUITE */
+.certification-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 0.6rem;
+  padding: 1rem;
+  background: linear-gradient(to top, 
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.7) 80%,
+    transparent 100%
+  );
+  backdrop-filter: blur(8px);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.certification-card:hover .certification-buttons {
+  background: linear-gradient(to top, 
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.75) 80%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  backdrop-filter: blur(12px);
+}
+
+/* Bouton Voir la certification - GRIS CLAIR VERS BLANC - TAILLE RÉDUITE */
+.certification-view-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+  color: #1a1a1a;
+  border: none;
+  padding: 0.5rem 0.4rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.certification-view-btn:hover {
+  background: linear-gradient(135deg, #f5f5f5, #ffffff);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 1);
+  color: #000000;
+}
+
+.certification-view-btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  stroke: #1a1a1a;
+}
+
+.certification-view-btn:hover svg {
+  transform: scale(1.15);
+  stroke: #000000;
+}
+
+/* Bouton Coursera - GRIS CLAIR VERS BLANC - TAILLE RÉDUITE */
+.certification-coursera-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #d6d6d6, #ebebeb);
+  color: #1a1a1a;
+  border: none;
+  padding: 0.5rem 0.4rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.certification-coursera-btn:hover {
+  background: linear-gradient(135deg, #ebebeb, #fafafa);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 1);
+  color: #000000;
+}
+
+.certification-coursera-btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  stroke: #1a1a1a;
+}
+
+.certification-coursera-btn:hover svg {
+  transform: translateX(4px) scale(1.1);
+  stroke: #000000;
+}
+
+/* Mode sombre - GRIS FONCÉ VERS NOIR - ÉCRITURE BLANCHE */
+.dark .certification-view-btn {
+  background: linear-gradient(135deg, #4a4a4a, #2d2d2d);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .certification-view-btn:hover {
+  background: linear-gradient(135deg, #5a5a5a, #3a3a3a);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.dark .certification-view-btn svg {
+  stroke: #ffffff;
+}
+
+.dark .certification-coursera-btn {
+  background: linear-gradient(135deg, #3a3a3a, #1f1f1f);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .certification-coursera-btn:hover {
+  background: linear-gradient(135deg, #4a4a4a, #2a2a2a);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.dark .certification-coursera-btn svg {
+  stroke: #ffffff;
+}
+
+.dark .certification-buttons {
+  background: linear-gradient(to top, 
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(10, 10, 10, 0.8) 80%,
+    transparent 100%
+  );
+}
+
+/* Animation d'entrée pour les cartes */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Badge de certification optionnel */
+.certification-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  color: black;
+  padding: 0.4rem 1rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Animation de chargement améliorée pour les images */
+.certification-image img {
+  background: linear-gradient(
+    90deg, 
+    #f0f0f0 25%, 
+    #e0e0e0 50%, 
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.dark .certification-image img {
+  background: linear-gradient(
+    90deg, 
+    #2c2c2c 25%, 
+    #3c3c3c 50%, 
+    #2c2c2c 75%
+  );
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* Experience Item Animation */
@@ -1409,7 +1683,7 @@ p {
   transform: scaleY(1);
 }
 
-/* === STYLES POUR LA PHOTO SANS CADRE NI EFFET === */
+/* Styles pour la photo sans cadre ni effet */
 .profile-image-container {
   width: 350px;
   height: 350px;
@@ -1425,50 +1699,40 @@ p {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  /* SUPPRIMEZ TOUS LES EFFETS VISUELS */
   border: none !important;
   box-shadow: none !important;
   outline: none !important;
   background: none !important;
-  
-  /* SUPPRIMEZ TOUTES LES ANIMATIONS */
   animation: none !important;
   transform: none !important;
   transition: none !important;
-  
-  /* Réinitialise tous les styles */
   margin: 0;
   padding: 0;
   filter: none !important;
 }
 
 .profile-image:hover {
-  /* Pas d'effet au survol non plus */
   border: none !important;
   box-shadow: none !important;
   transform: none !important;
   filter: none !important;
 }
 
-/* Supprimez tous les effets pseudo-éléments */
 .profile-image-container::before,
 .profile-image-container::after {
   content: none !important;
   display: none !important;
 }
 
-/* Supprimez l'overlay */
 .image-overlay {
   display: none !important;
 }
 
-/* Assurez-vous que l'image n'a pas d'effet AOS */
 .hero-image[data-aos] .profile-image {
   animation: none !important;
   transform: none !important;
 }
 
-/* Supprimez le badge si présent */
 .profile-badge {
   display: none !important;
 }
@@ -1508,17 +1772,14 @@ p {
   }
 }
 
-/* Application de l'animation lors du changement de contenu */
 [data-lang-change] {
   animation: languageChange 0.5s ease forwards;
 }
 
-/* Styles spécifiques pour le texte multilingue */
 [lang="fr"], [lang="en"], [lang="de"] {
   display: inline;
 }
 
-/* Améliorations pour l'affichage multilingue */
 .hero h2 {
   min-height: 60px;
 }
@@ -1527,31 +1788,26 @@ p {
   min-height: 100px;
 }
 
-/* Ajustements pour les titres longs en allemand */
 @media (max-width: 768px) {
   .experience-item h3 {
     font-size: 1.2rem;
   }
   
-  .certification-overlay h3 {
+  .certification-overlay h4 {
     font-size: 1rem;
   }
 }
 
-/* Smooth transition for language switch */
 .portfolio * {
   transition: opacity 0.3s ease;
 }
 
-/* Pour garantir que le sélecteur de langue reste visible */
 .nav-actions {
   display: flex;
   align-items: center;
 }
 
-/* === MODAL AMÉLIORÉE POUR LES CERTIFICATIONS === */
-
-/* Overlay de la modal */
+/* Modal améliorée pour les certifications */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -1590,10 +1846,9 @@ p {
   }
 }
 
-/* Contenu de la modal */
 .modal-content {
   background: var(--card-bg);
-  border-radius: 8px;
+  border-radius: 16px;
   max-width: 95%;
   max-height: 95vh;
   width: auto;
@@ -1604,7 +1859,8 @@ p {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-content.closing {
@@ -1633,7 +1889,6 @@ p {
   }
 }
 
-/* Bouton de fermeture */
 .modal-close {
   position: absolute;
   top: 15px;
@@ -1650,11 +1905,14 @@ p {
   z-index: 10;
   transition: all 0.2s ease;
   color: white;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .modal-close:hover {
   background: rgba(0, 0, 0, 0.9);
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .modal-close:focus {
@@ -1667,7 +1925,6 @@ p {
   height: 20px;
 }
 
-/* En-tête de la modal */
 .modal-header {
   padding: 25px 25px 15px;
   text-align: center;
@@ -1679,18 +1936,17 @@ p {
   font-size: 1.4rem;
   margin-bottom: 5px;
   color: var(--text-color);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.4;
 }
 
 .modal-issuer {
   color: var(--primary-color);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   margin: 0;
 }
 
-/* Corps de la modal */
 .modal-body {
   padding: 0;
   flex: 1;
@@ -1712,7 +1968,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 20px;
 }
 
 .certification-full-image {
@@ -1721,136 +1977,68 @@ p {
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 4px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Pied de la modal */
 .modal-footer {
   padding: 20px 25px;
   text-align: center;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   background: var(--card-bg);
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.modal-footer .btn-coursera {
+  background: linear-gradient(135deg, #d6d6d6, #ebebeb);
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-footer .btn-coursera:hover {
+  background: linear-gradient(135deg, #ebebeb, #fafafa);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #000000;
 }
 
 .modal-footer .btn-close {
-  background: var(--primary-color);
-  color: white;
+  background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+  color: #1a1a1a;
   border: none;
-  padding: 10px 30px;
-  border-radius: 4px;
-  font-size: 0.95rem;
-  font-weight: 500;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 120px;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .modal-footer .btn-close:hover {
-  background: var(--secondary-color);
+  background: linear-gradient(135deg, #f5f5f5, #ffffff);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #000000;
 }
 
-/* Bouton "Voir la certification" (version simple) */
-.certification-view-btn {
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 15px auto 0;
-  transition: all 0.2s ease;
-  width: 100%;
-  max-width: 200px;
-}
-
-.certification-view-btn:hover {
-  background: var(--secondary-color);
-  transform: translateY(-2px);
-}
-
-.certification-view-btn svg {
-  margin-right: 8px;
-  width: 16px;
-  height: 16px;
-}
-
-/* Améliorations pour les cartes de certification */
-.certification-card {
-  background: var(--card-bg);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.certification-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-}
-
-.certification-image {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4/3;
-  background: #f8f9fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-}
-
-.dark .certification-image {
-  background: #2a2a2a;
-}
-
-.certification-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: transform 0.5s ease;
-}
-
-.certification-card:hover .certification-image img {
-  transform: scale(1.05);
-}
-
-.certification-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  padding: 15px;
-  color: white;
-}
-
-.certification-overlay h4 {
-  font-size: 1rem;
-  margin-bottom: 5px;
-  color: white;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.certification-overlay p {
-  font-size: 0.85rem;
-  opacity: 0.9;
-  color: white;
-  margin: 0;
-}
-
-/* Mode sombre pour la modal */
 .dark .modal-content {
   background: var(--nav-bg);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1875,16 +2063,54 @@ p {
   background: rgba(255, 255, 255, 0.3);
 }
 
-.dark .certification-view-btn {
-  background: var(--primary-color);
+.dark .modal-footer .btn-coursera {
+  background: linear-gradient(135deg, #3a3a3a, #1f1f1f);
+  color: #ffffff;
 }
 
-.dark .certification-view-btn:hover {
-  background: var(--secondary-color);
+.dark .modal-footer .btn-coursera:hover {
+  background: linear-gradient(135deg, #4a4a4a, #2a2a2a);
+  color: #ffffff;
 }
 
-/* Responsive pour la modal */
+.dark .modal-footer .btn-close {
+  background: linear-gradient(135deg, #4a4a4a, #2d2d2d);
+  color: #ffffff;
+}
+
+.dark .modal-footer .btn-close:hover {
+  background: linear-gradient(135deg, #5a5a5a, #3a3a3a);
+  color: #ffffff;
+}
+
+/* Responsive pour la modal et les certifications */
 @media (max-width: 768px) {
+  .certifications-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.8rem;
+  }
+  
+  .certification-buttons {
+    flex-direction: column;
+    padding: 0.8rem;
+    gap: 0.5rem;
+  }
+  
+  .certification-view-btn,
+  .certification-coursera-btn {
+    padding: 0.45rem 0.4rem;
+    font-size: 0.7rem;
+    border-radius: 18px;
+  }
+  
+  .certification-overlay h4 {
+    font-size: 1.1rem;
+  }
+  
+  .certification-overlay p {
+    font-size: 0.85rem;
+  }
+  
   .modal-content {
     max-width: 98%;
     max-height: 90vh;
@@ -1918,13 +2144,44 @@ p {
     height: 18px;
   }
   
-  .certification-view-btn {
-    padding: 8px 15px;
-    font-size: 0.85rem;
+  .modal-footer {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .modal-footer .btn-coursera,
+  .modal-footer .btn-close {
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .certification-card {
+    aspect-ratio: 4/3;
+  }
+  
+  .certification-buttons {
+    padding: 0.7rem;
+  }
+  
+  .certification-view-btn,
+  .certification-coursera-btn {
+    padding: 0.4rem 0.35rem;
+    font-size: 0.65rem;
+    border-radius: 16px;
+  }
+  
+  .certification-view-btn svg,
+  .certification-coursera-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+  
   .modal-content {
     max-width: 100%;
     max-height: 95vh;
@@ -1950,60 +2207,28 @@ p {
   .certification-full-image {
     max-height: 50vh;
   }
-  
-  .modal-footer {
-    padding: 15px;
+}
+
+/* Pour les très petits écrans */
+@media (max-width: 360px) {
+  .certification-view-btn span,
+  .certification-coursera-btn span {
+    display: none;
   }
   
-  .modal-footer .btn-close {
-    padding: 8px 20px;
-    font-size: 0.9rem;
+  .certification-view-btn,
+  .certification-coursera-btn {
+    padding: 0.6rem;
+  }
+  
+  .certification-view-btn svg,
+  .certification-coursera-btn svg {
+    width: 16px;
+    height: 16px;
+    margin: 0;
   }
 }
 
-/* Animation de chargement pour les images */
-.certification-image img {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-}
-
-.dark .certification-image img {
-  background: linear-gradient(90deg, #2c2c2c 25%, #3c3c3c 50%, #2c2c2c 75%);
-}
-
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
-/* Empêche le défilement de l'arrière-plan quand la modal est ouverte */
 body.modal-open {
   overflow: hidden;
-}
-
-/* Améliorations pour la grille des certifications */
-.certifications-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .certifications-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .certifications-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
 }

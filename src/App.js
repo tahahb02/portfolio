@@ -23,6 +23,16 @@ const flagUrls = {
   de: 'https://flagcdn.com/w320/de.png'
 };
 
+// Liens des certifications (dans l'ordre)
+const certLinks = [
+  "https://coursera.org/verify/E2G6LQ6RPKF9", // Java
+  "https://coursera.org/verify/specialization/YK2QFQMJJWM7", // Python
+  "https://coursera.org/verify/WDJRQJ5NBEKQ", // React
+  "https://coursera.org/verify/HR2PPS34TLCD", // UML
+  "https://coursera.org/verify/GJH6FXZ4ETZH", // Agile
+  "https://coursera.org/verify/C3ZB2U66SMKY"  // French
+];
+
 // Fichier de traductions
 const translations = {
   fr: {
@@ -184,37 +194,44 @@ const translations = {
     certifications: {
       title: "Mes Certifications",
       viewCert: "Voir la certification",
+      viewOnCoursera: "Voir sur Coursera",
       close: "Fermer",
       certifications: [
         {
           title: "Introduction to Java and Object-Oriented Programming",
           issuer: "Coursera",
-          image: javaCert
+          image: javaCert,
+          link: "https://coursera.org/verify/E2G6LQ6RPKF9"
         },
         {
           title: "Python for Everybody",
           issuer: "Coursera",
-          image: pythonCert
+          image: pythonCert,
+          link: "https://coursera.org/verify/specialization/YK2QFQMJJWM7"
         },
         {
           title: "React Basics",
           issuer: "Coursera",
-          image: reactCert
+          image: reactCert,
+          link: "https://coursera.org/verify/WDJRQJ5NBEKQ"
         },
         {
           title: "Software Engineering: Modeling Software Systems using UML",
           issuer: "Coursera",
-          image: umlCert
+          image: umlCert,
+          link: "https://coursera.org/verify/HR2PPS34TLCD"
         },
         {
           title: "Agile with Atlassian Jira",
           issuer: "Coursera",
-          image: agileCert
+          image: agileCert,
+          link: "https://coursera.org/verify/GJH6FXZ4ETZH"
         },
         {
           title: "French Intermediate course B1-B2",
           issuer: "Coursera",
-          image: frenchCert
+          image: frenchCert,
+          link: "https://coursera.org/verify/C3ZB2U66SMKY"
         }
       ]
     },
@@ -399,37 +416,44 @@ const translations = {
     certifications: {
       title: "My Certifications",
       viewCert: "View certification",
+      viewOnCoursera: "View on Coursera",
       close: "Close",
       certifications: [
         {
           title: "Introduction to Java and Object-Oriented Programming",
           issuer: "Coursera",
-          image: javaCert
+          image: javaCert,
+          link: "https://coursera.org/verify/E2G6LQ6RPKF9"
         },
         {
           title: "Python for Everybody",
           issuer: "Coursera",
-          image: pythonCert
+          image: pythonCert,
+          link: "https://coursera.org/verify/specialization/YK2QFQMJJWM7"
         },
         {
           title: "React Basics",
           issuer: "Coursera",
-          image: reactCert
+          image: reactCert,
+          link: "https://coursera.org/verify/WDJRQJ5NBEKQ"
         },
         {
           title: "Software Engineering: Modeling Software Systems using UML",
           issuer: "Coursera",
-          image: umlCert
+          image: umlCert,
+          link: "https://coursera.org/verify/HR2PPS34TLCD"
         },
         {
           title: "Agile with Atlassian Jira",
           issuer: "Coursera",
-          image: agileCert
+          image: agileCert,
+          link: "https://coursera.org/verify/GJH6FXZ4ETZH"
         },
         {
           title: "French Intermediate course B1-B2",
           issuer: "Coursera",
-          image: frenchCert
+          image: frenchCert,
+          link: "https://coursera.org/verify/C3ZB2U66SMKY"
         }
       ]
     },
@@ -614,37 +638,44 @@ const translations = {
     certifications: {
       title: "Meine Zertifizierungen",
       viewCert: "Zertifizierung ansehen",
+      viewOnCoursera: "Auf Coursera ansehen",
       close: "Schließen",
       certifications: [
         {
           title: "Introduction to Java and Object-Oriented Programming",
           issuer: "Coursera",
-          image: javaCert
+          image: javaCert,
+          link: "https://coursera.org/verify/E2G6LQ6RPKF9"
         },
         {
           title: "Python for Everybody",
           issuer: "Coursera",
-          image: pythonCert
+          image: pythonCert,
+          link: "https://coursera.org/verify/specialization/YK2QFQMJJWM7"
         },
         {
           title: "React Basics",
           issuer: "Coursera",
-          image: reactCert
+          image: reactCert,
+          link: "https://coursera.org/verify/WDJRQJ5NBEKQ"
         },
         {
           title: "Software Engineering: Modeling Software Systems using UML",
           issuer: "Coursera",
-          image: umlCert
+          image: umlCert,
+          link: "https://coursera.org/verify/HR2PPS34TLCD"
         },
         {
           title: "Agile with Atlassian Jira",
           issuer: "Coursera",
-          image: agileCert
+          image: agileCert,
+          link: "https://coursera.org/verify/GJH6FXZ4ETZH"
         },
         {
           title: "French Intermediate course B1-B2",
           issuer: "Coursera",
-          image: frenchCert
+          image: frenchCert,
+          link: "https://coursera.org/verify/C3ZB2U66SMKY"
         }
       ]
     },
@@ -725,6 +756,11 @@ const CertificationModal = ({ certification, onClose, language }) => {
   
   if (!certification) return null;
 
+  // Fonction pour ouvrir le lien Coursera
+  const openCourseraLink = () => {
+    window.open(certification.link, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className={`modal-overlay ${isClosing ? 'closing' : ''}`}>
       <div className={`modal-content ${isClosing ? 'closing' : ''}`}>
@@ -751,6 +787,14 @@ const CertificationModal = ({ certification, onClose, language }) => {
         </div>
         
         <div className="modal-footer">
+          <button className="btn btn-coursera" onClick={openCourseraLink}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            {t.certifications.viewOnCoursera}
+          </button>
           <button className="btn btn-close" onClick={handleClose}>
             {t.certifications.close}
           </button>
@@ -767,6 +811,32 @@ function App() {
   const [selectedCert, setSelectedCert] = useState(null);
 
   const t = translations[language];
+
+  // Ignorer les erreurs MetaMask
+  useEffect(() => {
+    const handleErrors = (e) => {
+      if (e.message?.includes('MetaMask') || e.filename?.includes('chrome-extension')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    };
+
+    const handleRejections = (e) => {
+      if (e.reason?.message?.includes('MetaMask')) {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    window.addEventListener('error', handleErrors, true);
+    window.addEventListener('unhandledrejection', handleRejections);
+
+    return () => {
+      window.removeEventListener('error', handleErrors, true);
+      window.removeEventListener('unhandledrejection', handleRejections);
+    };
+  }, []);
 
   useEffect(() => {
     document.title = "Taha Hilal Bik - Portfolio";
@@ -871,6 +941,11 @@ function App() {
   const closeCertification = () => {
     setSelectedCert(null);
     document.body.style.overflow = 'auto';
+  };
+
+  // Fonction pour ouvrir directement le lien Coursera
+  const openCourseraLink = (link) => {
+    window.open(link, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -1162,16 +1237,29 @@ function App() {
                     <p>{cert.issuer}</p>
                   </div>
                 </div>
-                <button 
-                  className="certification-view-btn"
-                  onClick={() => openCertification(cert)}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>
-                  {t.certifications.viewCert}
-                </button>
+                <div className="certification-buttons">
+                  <button 
+                    className="certification-view-btn"
+                    onClick={() => openCertification(cert)}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    {t.certifications.viewCert}
+                  </button>
+                  <button 
+                    className="certification-coursera-btn"
+                    onClick={() => openCourseraLink(cert.link)}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    {t.certifications.viewOnCoursera}
+                  </button>
+                </div>
               </div>
             ))}
           </div>
